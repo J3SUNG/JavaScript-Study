@@ -71,7 +71,7 @@ setTimeout(function funcCallback() {
   color(lotto[5], result);
 }, 6000);
 setTimeout(function funcCallback() {
-  var bonusBall = document.querySelector(".bonus")[0];
+  var bonusBall = document.querySelector(".bonus");
   color(bonus, bonusBall);
 }, 7000);
 
