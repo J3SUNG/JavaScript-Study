@@ -52,24 +52,15 @@ function color(num, result) {
   ball.style.background = backgroundColor;
   result.appendChild(ball);
 }
-setTimeout(function funcCallback() {
-  color(lotto[0], result);
-}, 1000);
-setTimeout(function funcCallback() {
-  color(lotto[1], result);
-}, 2000);
-setTimeout(function funcCallback() {
-  color(lotto[2], result);
-}, 3000);
-setTimeout(function funcCallback() {
-  color(lotto[3], result);
-}, 4000);
-setTimeout(function funcCallback() {
-  color(lotto[4], result);
-}, 5000);
-setTimeout(function funcCallback() {
-  color(lotto[5], result);
-}, 6000);
+
+for (var i = 0; i < lotto.length; ++i) {
+  (function closer(j) {
+    setTimeout(function () {
+      color(lotto[j], result);
+    }, (j + 1) * 1000);
+  })(i);
+}
+
 setTimeout(function funcCallback() {
   var bonusBall = document.querySelector(".bonus");
   color(bonus, bonusBall);

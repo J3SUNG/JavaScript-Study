@@ -4,11 +4,25 @@
     <meta charset="utf-8" />
     <title>지뢰찾기</title>
     <style>
+      table {
+        border-collapse: collapse;
+      }
       td {
-        border: 1px solid black;
+        border: 1px solid #bbb;
         width: 20px;
         height: 20px;
         text-align: center;
+        line-height: 20px;
+        background-color: #222;
+      }
+      td.opened {
+        background-color: white;
+      }
+      td.flag {
+        background: red;
+      }
+      td.question {
+        background: orange;
       }
     </style>
   </head>
@@ -25,6 +39,7 @@
         <tbody></tbody>
       </thead>
     </table>
+    <div id ="result"></div>
     <script src="지뢰찾기.js"></script>
   </body>
 </html>
