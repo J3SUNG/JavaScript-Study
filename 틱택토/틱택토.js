@@ -10,6 +10,7 @@ var turn = "X";
 var end = false;
 
 function init() {
+  turn = "X";
   end = false;
   count = 0;
 
@@ -34,20 +35,19 @@ function funcCalc() {
     arrCell[2][clickCell].textContent === turn
   ) {
     end = true;
-  } else if (clickCell === clickLine || Math.abs(clickCell - clickLine) === 2) {
-    if (
-      arrCell[0][0].textContent === turn &&
-      arrCell[1][1].textContent === turn &&
-      arrCell[2][2].textContent === turn
-    ) {
-      end = true;
-    } else if (
-      arrCell[0][2].textContent === turn &&
-      arrCell[1][1].textContent === turn &&
-      arrCell[2][0].textContent === turn
-    ) {
-      end = true;
-    }
+  }
+  if (
+    arrCell[0][0].textContent === turn &&
+    arrCell[1][1].textContent === turn &&
+    arrCell[2][2].textContent === turn
+  ) {
+    end = true;
+  } else if (
+    arrCell[0][2].textContent === turn &&
+    arrCell[1][1].textContent === turn &&
+    arrCell[2][0].textContent === turn
+  ) {
+    end = true;
   }
 
   if (end === true) {
@@ -58,6 +58,9 @@ function funcCalc() {
 }
 
 var funcCallback = function (event) {
+  if (turn === "O") {
+    return;
+  }
   clickLine = arrLine.indexOf(event.target.parentNode);
   clickCell = arrCell[clickLine].indexOf(event.target);
 
@@ -77,6 +80,24 @@ var funcCallback = function (event) {
       end = true;
       return;
     }
+    setTimeout(function () {
+      ++count;
+      console.log("컴퓨터의 턴입니다.");
+      var nonSelectCell = [];
+      arrCell.forEach(function (line) {
+        line.forEach(function (cell) {
+          nonSelectCell.push(cell);
+        });
+      });
+      nonSelectCell = nonSelectCell.filter(function (cell) {
+        return !cell.textContent;
+      });
+      var selectCell =
+        nonSelectCell[Math.floor(Math.random() * nonSelectCell.length)];
+      selectCell.textContent = turn;
+      funcCalc();
+      turn = "X";
+    }, 1000);
     if (turn == "X") {
       turn = "O";
     } else {
