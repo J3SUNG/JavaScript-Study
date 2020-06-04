@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>자스스톤</title>
+    <style>
+      #my,
+      #rival {
+        display: inline-block;
+        vertical-align: top;
+      }
+      #rival {
+        vertical-align: bottom;
+      }
+      #my-deck,
+      #rival-deck {
+        display: inline-block;
+        vertical-align: top;
+        width: 400px;
+        margin-left: 100px;
+      }
+      #rival-deck,
+      #rival-hero,
+      #rival-cards,
+      #my-deck,
+      #my-hero,
+      #my-cards {
+        text-align: center;
+      }
+      .card {
+        width: 100px;
+        height: 150px;
+        display: inline-block;
+        position: relative;
+        border: 1px solid black;
+        margin-bottom: 15px;
+      }
+      .card-name {
+        text-align: center;
+      }
+      .card-att,
+      .card-hp,
+      .card-cost {
+        font-size: 22px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 30px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: inline-blockl;
+        position: absolute;
+        bottom: 0;
+        border: 1px solid black;
+      }
+      .card-cost {
+        bottom: auto;
+        top: 0;
+        right: 0;
+        background-color: blue;
+        color: white;
+      }
+      .card-att {
+        left: 0;
+        background-color: green;
+        color: white;
+      }
+      .card-hp {
+        right: 0;
+        background-color: red;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="rival">
+      <div id="my-cost">코스트 : <span>10</span></div>
+      <div id="rival-hero">
+        <div class="card">
+          <div class="card-name">상대 영웅</div>
+          <div class="card-att">5</div>
+          <div class="card-hp">10</div>
+        </div>
+      </div>
+      <div id="rival-cards" style="height: 200px;"></div>
+    </div>
+    <div id="rival-deck">
+      <div>덱</div>
+      <div class="card">
+        <div class="card-cost">2</div>
+        <div class="card-att">5</div>
+        <div class="card-hp">10</div>
+      </div>
+      <div class="card">
+        <div class="card-cost">2</div>
+        <div class="card-att">5</div>
+        <div class="card-hp">10</div>
+      </div>
+      <div class="card">
+        <div class="card-cost">2</div>
+        <div class="card-att">5</div>
+        <div class="card-hp">10</div>
+      </div>
+      <div class="card">
+        <div class="card-cost">2</div>
+        <div class="card-att">5</div>
+        <div class="card-hp">10</div>
+      </div>
+      <div class="card">
+        <div class="card-cost">2</div>
+        <div class="card-att">5</div>
+        <div class="card-hp">10</div>
+      </div>
+    </div>
+    <hr />
+    <div id="my">
+      <div id="my-cards" style="height: 200px;"></div>
+      <div id="my-hero">
+        <div class="card">
+          <div class="card-name">내 영웅</div>
+          <div class="card-att">5</div>
+          <div class="card-hp">10</div>
+        </div>
+      </div>
+      <div id="my-cost">코스트 : <span>10</span></div>
+    </div>
+    <div id="my-deck">
+      <div>덱</div>
+      <div class="card">
+        <div class="card-cost">2</div>
+        <div class="card-att">5</div>
+        <div class="card-hp">10</div>
+      </div>
+      <div class="card">
+        <div class="card-cost">2</div>
+        <div class="card-att">5</div>
+        <div class="card-hp">10</div>
+      </div>
+      <div class="card">
+        <div class="card-cost">2</div>
+        <div class="card-att">5</div>
+        <div class="card-hp">10</div>
+      </div>
+      <div class="card">
+        <div class="card-cost">2</div>
+        <div class="card-att">5</div>
+        <div class="card-hp">10</div>
+      </div>
+      <div class="card">
+        <div class="card-cost">2</div>
+        <div class="card-att">5</div>
+        <div class="card-hp">10</div>
+      </div>
+    </div>
+    <script src="자스스톤.js"></script>
+  </body>
+</html>
