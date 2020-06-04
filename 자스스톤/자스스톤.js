@@ -4,6 +4,8 @@ var myDeck = document.getElementById("my-deck");
 var rivalDeck = document.getElementById("rival-deck");
 var myField = document.getElementById("my-cards");
 var rivalField = document.getElementById("rival-cards");
+var myCost = document.getElementById("my-cost");
+var rivalCost = document.getElementById("rival-cost");
 var myDeckData = [];
 var rivalDeckData = [];
 var myHeroData;
@@ -26,6 +28,12 @@ function set(data, dom, hero) {
   card.addEventListener("click", function () {
     if (turn) {
       if (!data.mine) {
+        console.log(data.mine);
+        console.log(turn);
+        return;
+      }
+      var currentCost = Number(myCost.textContent);
+      if (myCost < data.cost) {
         return;
       }
       var idx = myDeckData.indexOf(data);
@@ -39,8 +47,13 @@ function set(data, dom, hero) {
       myDeckData.forEach(function (data) {
         set(data, myDeck);
       });
+      myCost.textContent = currentCost - data.cost;
     } else {
       if (data.mine) {
+        return;
+      }
+      var currentCost = Number(myCost.textContent);
+      if (myCost < data.cost) {
         return;
       }
       var idx = rivalDeckData.indexOf(data);
@@ -54,6 +67,7 @@ function set(data, dom, hero) {
       rivalDeckData.forEach(function (data) {
         set(data, rivalDeck);
       });
+      rivalCost.textContent = currentCost - data.cost;
     }
   });
   dom.appendChild(card);
@@ -92,12 +106,14 @@ function Card(hero, myCard) {
     this.hp = Math.ceil(Math.random() * 5);
     this.cost = Math.floor((this.att + this.hp) / 2);
   }
+  console.log(myCard);
   if (myCard) {
+    console.log("AA");
     this.mine = true;
   }
 }
-function createCard(hero) {
-  return new Card(hero);
+function createCard(hero, card) {
+  return new Card(hero, card);
 }
 function init() {
   createMyDeck(5);
