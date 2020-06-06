@@ -9,6 +9,9 @@
         display: inline-block;
         vertical-align: top;
       }
+      .turn {
+        border: 1px solid black;
+      }
       #rival {
         vertical-align: bottom;
       }
@@ -73,6 +76,11 @@
       .card-hidden {
         display: none;
       }
+      #turn-btn {
+        float: right;
+        position: relative;
+        top: -23px;
+      }
     </style>
   </head>
   <body>
@@ -85,7 +93,8 @@
       <div>덱</div>
     </div>
     <hr />
-    <div id="my">
+    <button id="turn-btn">턴넘기기</button>
+    <div id="my" class="turn">
       <div id="my-cards" style="height: 200px;"></div>
       <div id="my-hero"></div>
       <div>코스트 : <span id="my-cost">10</span>/<span>10</span></div>

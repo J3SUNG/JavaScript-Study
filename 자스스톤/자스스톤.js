@@ -6,6 +6,7 @@ var myField = document.getElementById("my-cards");
 var rivalField = document.getElementById("rival-cards");
 var myCost = document.getElementById("my-cost");
 var rivalCost = document.getElementById("rival-cost");
+var turnButton = document.getElementById("turn-btn");
 var myDeckData = [];
 var rivalDeckData = [];
 var myHeroData;
@@ -33,7 +34,7 @@ function set(data, dom, hero) {
         return;
       }
       var currentCost = Number(myCost.textContent);
-      if (myCost < data.cost) {
+      if (Number(myCost.textContent) < data.cost) {
         return;
       }
       var idx = myDeckData.indexOf(data);
@@ -52,8 +53,8 @@ function set(data, dom, hero) {
       if (data.mine) {
         return;
       }
-      var currentCost = Number(myCost.textContent);
-      if (myCost < data.cost) {
+      var currentCost = Number(rivalCost.textContent);
+      if (Number(rivalCost.textContent) < data.cost) {
         return;
       }
       var idx = rivalDeckData.indexOf(data);
@@ -121,6 +122,12 @@ function init() {
   createMyHero();
   createRivalHero();
 }
+
+turnButton.addEventListener("click", function () {
+  turn = !turn;
+  document.getElementById("rival").classList.toggle("turn");
+  document.getElementById("my").classList.toggle("turn");
+});
 
 var turn = true;
 function getCard() {}
