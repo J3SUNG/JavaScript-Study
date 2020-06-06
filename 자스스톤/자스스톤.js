@@ -6,6 +6,8 @@ var my = {
   deckData: [],
   heroData: [],
   fieldData: [],
+  selectedCard: null,
+  selectedCardData: null,
 };
 
 var rival = {
@@ -16,6 +18,8 @@ var rival = {
   deckData: [],
   heroData: [],
   fieldData: [],
+  selectedCard: null,
+  selectedCardData: null,
 };
 
 var turnButton = document.getElementById("turn-btn");
@@ -56,11 +60,27 @@ function set(data, dom, hero) {
   }
   card.addEventListener("click", function () {
     if (turn) {
-      if (!data.mine || data.field) {
+      if (!data.mine) {
+        data.hp -= my.selectedCard.att;
+        my.selectedCard.classList.remove("card-selected");
+        my.selectedCard.classList.add("card-turnover");
+        my.selectedCard = null;
+        my.selectedCardData = null;
+      }
+      if (!data.mine) {
         return;
       }
-      if (deckToField(data, turn)) {
-        createMyDeck(1);
+      if (data.field) {
+        card.parentNode.querySelectorAll(".card").forEach(function (thisCard) {
+          thisCard.classList.remove("card-selected");
+        });
+        card.classList.add("card-selected");
+        my.selectedCard = card;
+        my.selectedCardData = data;
+      } else {
+        if (deckToField(data, turn)) {
+          createMyDeck(1);
+        }
       }
     } else {
       if (data.mine || data.field) {
