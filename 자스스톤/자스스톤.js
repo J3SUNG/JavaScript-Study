@@ -21,6 +21,27 @@ var rival = {
 var turnButton = document.getElementById("turn-btn");
 var turn = true;
 
+function deckToField(data, turn) {
+  var who = turn ? my : rival;
+  var currentCost = Number(who.cost.textContent);
+
+  if (Number(who.cost.textContent) < data.cost) {
+    return false;
+  }
+  var idx = who.deckData.indexOf(data);
+  who.deckData.splice(idx, 1);
+  who.fieldData.push(data);
+  who.deck.innerHTML = "";
+  who.field.innerHTML = "";
+  who.fieldData.forEach(function (data) {
+    set(data, who.field);
+  });
+  who.deckData.forEach(function (data) {
+    set(data, who.deck);
+  });
+  data.field = true;
+  who.cost.textContent = currentCost - data.cost;
+}
 function set(data, dom, hero) {
   var card = document.querySelector(".card-hidden .card").cloneNode(true);
   card.querySelector(".card-cost").textContent = data.cost;
@@ -38,46 +59,16 @@ function set(data, dom, hero) {
       if (!data.mine || data.field) {
         return;
       }
-      var currentCost = Number(my.cost.textContent);
-      if (Number(my.cost.textContent) < data.cost) {
-        return;
+      if (deckToField(data, turn)) {
+        createMyDeck(1);
       }
-      var idx = my.deckData.indexOf(data);
-      my.deckData.splice(idx, 1);
-      my.fieldData.push(data);
-      my.deck.innerHTML = "";
-      my.field.innerHTML = "";
-      my.fieldData.forEach(function (data) {
-        set(data, my.field);
-      });
-      my.deckData.forEach(function (data) {
-        set(data, my.deck);
-      });
-      data.field = true;
-      my.cost.textContent = currentCost - data.cost;
-      createMyDeck(1);
     } else {
       if (data.mine || data.field) {
         return;
       }
-      var currentCost = Number(rival.cost.textContent);
-      if (Number(rival.cost.textContent) < data.cost) {
-        return;
+      if (deckToField(data, turn)) {
+        createRivalDeck(1);
       }
-      var idx = rival.deckData.indexOf(data);
-      rival.deckData.splice(idx, 1);
-      rival.fieldData.push(data);
-      rival.deck.innerHTML = "";
-      rival.field.innerHTML = "";
-      rival.fieldData.forEach(function (data) {
-        set(data, rival.field);
-      });
-      rival.deckData.forEach(function (data) {
-        set(data, rival.deck);
-      });
-      data.field = true;
-      rival.cost.textContent = currentCost - data.cost;
-      createRivalDeck(1);
     }
   });
   dom.appendChild(card);
