@@ -28,7 +28,7 @@ function set(data, dom, hero) {
   }
   card.addEventListener("click", function () {
     if (turn) {
-      if (!data.mine) {
+      if (!data.mine || data.field) {
         console.log(data.mine);
         console.log(turn);
         return;
@@ -48,9 +48,11 @@ function set(data, dom, hero) {
       myDeckData.forEach(function (data) {
         set(data, myDeck);
       });
+      data.field = true;
       myCost.textContent = currentCost - data.cost;
+      createMyDeck(1);
     } else {
-      if (data.mine) {
+      if (data.mine || data.field) {
         return;
       }
       var currentCost = Number(rivalCost.textContent);
@@ -68,7 +70,9 @@ function set(data, dom, hero) {
       rivalDeckData.forEach(function (data) {
         set(data, rivalDeck);
       });
+      data.field = true;
       rivalCost.textContent = currentCost - data.cost;
+      createRivalDeck(1);
     }
   });
   dom.appendChild(card);
@@ -77,6 +81,7 @@ function createMyDeck(num) {
   for (var i = 0; i < num; ++i) {
     myDeckData.push(createCard(false, true));
   }
+  myDeck.innerHTML = "";
   myDeckData.forEach(function (data) {
     set(data, myDeck);
   });
@@ -85,6 +90,7 @@ function createRivalDeck(num) {
   for (var i = 0; i < num; ++i) {
     rivalDeckData.push(createCard(false, false));
   }
+  rivalDeck.innerHTML = "";
   rivalDeckData.forEach(function (data) {
     set(data, rivalDeck);
   });
@@ -125,6 +131,11 @@ function init() {
 
 turnButton.addEventListener("click", function () {
   turn = !turn;
+  if (turn) {
+    rivalCost.textContent = 10;
+  } else {
+    myCost.textContent = 10;
+  }
   document.getElementById("rival").classList.toggle("turn");
   document.getElementById("my").classList.toggle("turn");
 });
