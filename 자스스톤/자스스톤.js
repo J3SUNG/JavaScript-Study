@@ -29,7 +29,6 @@ function deckToField(data, turn) {
   var who = turn ? my : rival;
   var currentCost = Number(who.cost.textContent);
 
-  console.log(Number(who.cost.textContent), data.cost);
   if (Number(who.cost.textContent) < data.cost) {
     return false;
   }
@@ -38,12 +37,8 @@ function deckToField(data, turn) {
   who.fieldData.push(data);
   who.deck.innerHTML = "";
   who.field.innerHTML = "";
-  who.fieldData.forEach(function (data) {
-    set(data, who.field);
-  });
-  who.deckData.forEach(function (data) {
-    set(data, who.deck);
-  });
+  reDrawField(who);
+  reDrawDeck(who);
   data.field = true;
   who.cost.textContent = currentCost - data.cost;
 
