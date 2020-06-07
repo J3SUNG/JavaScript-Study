@@ -29,6 +29,7 @@ function deckToField(data, turn) {
   var who = turn ? my : rival;
   var currentCost = Number(who.cost.textContent);
 
+  console.log(Number(who.cost.textContent), data.cost);
   if (Number(who.cost.textContent) < data.cost) {
     return false;
   }
@@ -45,7 +46,24 @@ function deckToField(data, turn) {
   });
   data.field = true;
   who.cost.textContent = currentCost - data.cost;
+
+  return true;
 }
+
+function reDraw(turn) {
+  var who = turn ? my : rival;
+  who.deck.innerHTML = "";
+  who.field.innerHTML = "";
+  who.hero.innerHTML = "";
+  who.fieldData.forEach(function (data) {
+    set(data, who.field);
+  });
+  who.deckData.forEach(function (data) {
+    set(data, who.deck);
+  });
+  set(who.heroData, who.hero, true);
+}
+
 function set(data, dom, hero) {
   var card = document.querySelector(".card-hidden .card").cloneNode(true);
   card.querySelector(".card-cost").textContent = data.cost;
@@ -60,17 +78,32 @@ function set(data, dom, hero) {
   }
   card.addEventListener("click", function () {
     if (turn) {
-      if (!data.mine) {
-        data.hp -= my.selectedCard.att;
+      console.log(
+        !data.mine,
+        my.selectedCard,
+        !card.classList.contains("card-turnover")
+      );
+      if (
+        !data.mine &&
+        my.selectedCard &&
+        !card.classList.contains("card-turnover")
+      ) {
+        console.log(my.selectedCard);
+        console.log(data.hp, my.selectedCardData.att);
+        data.hp = data.hp - my.selectedCardData.att;
+        reDraw(!turn);
         my.selectedCard.classList.remove("card-selected");
         my.selectedCard.classList.add("card-turnover");
         my.selectedCard = null;
         my.selectedCardData = null;
+        console.log("A");
       }
       if (!data.mine) {
+        console.log("B");
         return;
       }
       if (data.field) {
+        console.log("C");
         card.parentNode.querySelectorAll(".card").forEach(function (thisCard) {
           thisCard.classList.remove("card-selected");
         });
@@ -94,6 +127,7 @@ function set(data, dom, hero) {
   dom.appendChild(card);
 }
 function createMyDeck(num) {
+  console.log("hello");
   for (var i = 0; i < num; ++i) {
     my.deckData.push(createCard(false, true));
   }
