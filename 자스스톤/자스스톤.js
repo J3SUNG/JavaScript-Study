@@ -50,18 +50,69 @@ function deckToField(data, turn) {
   return true;
 }
 
-function reDraw(turn) {
-  var who = turn ? my : rival;
-  who.deck.innerHTML = "";
-  who.field.innerHTML = "";
-  who.hero.innerHTML = "";
-  who.fieldData.forEach(function (data) {
+function reDrawField(who) {
+  who.field.innerHTML = '';
+  who.fieldData.forEach(function(data){
     set(data, who.field);
   });
-  who.deckData.forEach(function (data) {
+}
+
+function reDrawDeck(who) {
+  who.deck.innerHTML = '';
+  who.deckData.forEach(function(data){
     set(data, who.deck);
   });
+}
+
+function reDrawHero() {
+  who.hero.innerHTML = '';
   set(who.heroData, who.hero, true);
+}
+
+function reDraw(turn) {
+  var who = turn ? my : rival;
+  reDrawField(who);
+  reDrawDeck(who);
+  reDrawHero(who);
+}
+
+function activeTurn(card, data, turn) {
+  var who = turn ? who : rival;
+  var 
+  if (card.classList.contains("card-turnover")) {
+    return;
+  }
+  if ((turn ? !data.mine : data.mine) && who.selectedCard) {
+    data.hp = data.hp - who.selectedCardData.att;
+    if (data.hp <= 0) {
+      var index = rival.fieldData.indexOf(data);
+      if (index > -1) {
+        rival.fieldData.splice(index, 1);
+      } else {
+        alert("승리하셨습니다!");
+        init();
+      }
+    }
+    reDraw(!turn);
+    who.selectedCard.classList.remove("card-selected");
+    who.selectedCard.classList.add("card-turnover");
+    who.selectedCard = null;
+    who.selectedCardData = null;
+  } else if ((turn ? !data.mine : data.mine)) {
+    return;
+  }
+  if (data.field) {
+    card.parentNode.querySelectorAll(".card").forEach(function (thisCard) {
+      thisCard.classList.remove("card-selected");
+    });
+    card.classList.add("card-selected");
+    who.selectedCard = card;
+    who.selectedCardData = data;
+  } else {
+    if (deckToField(data, turn)) {
+      turn ? createMyDeck(1) : createRivalDeck(1);
+    }
+  }
 }
 
 function set(data, dom, hero) {
@@ -77,52 +128,7 @@ function set(data, dom, hero) {
     card.appendChild(name);
   }
   card.addEventListener("click", function () {
-    if (turn) {
-      console.log(
-        !data.mine,
-        my.selectedCard,
-        !card.classList.contains("card-turnover")
-      );
-      if (
-        !data.mine &&
-        my.selectedCard &&
-        !card.classList.contains("card-turnover")
-      ) {
-        console.log(my.selectedCard);
-        console.log(data.hp, my.selectedCardData.att);
-        data.hp = data.hp - my.selectedCardData.att;
-        reDraw(!turn);
-        my.selectedCard.classList.remove("card-selected");
-        my.selectedCard.classList.add("card-turnover");
-        my.selectedCard = null;
-        my.selectedCardData = null;
-        console.log("A");
-      }
-      if (!data.mine) {
-        console.log("B");
-        return;
-      }
-      if (data.field) {
-        console.log("C");
-        card.parentNode.querySelectorAll(".card").forEach(function (thisCard) {
-          thisCard.classList.remove("card-selected");
-        });
-        card.classList.add("card-selected");
-        my.selectedCard = card;
-        my.selectedCardData = data;
-      } else {
-        if (deckToField(data, turn)) {
-          createMyDeck(1);
-        }
-      }
-    } else {
-      if (data.mine || data.field) {
-        return;
-      }
-      if (deckToField(data, turn)) {
-        createRivalDeck(1);
-      }
-    }
+    activeTurn(card, data, turn);
   });
   dom.appendChild(card);
 }
@@ -131,19 +137,13 @@ function createMyDeck(num) {
   for (var i = 0; i < num; ++i) {
     my.deckData.push(createCard(false, true));
   }
-  my.deck.innerHTML = "";
-  my.deckData.forEach(function (data) {
-    set(data, my.deck);
-  });
+  reDrawDeck(true);
 }
 function createRivalDeck(num) {
   for (var i = 0; i < num; ++i) {
     rival.deckData.push(createCard(false, false));
   }
-  rival.deck.innerHTML = "";
-  rival.deckData.forEach(function (data) {
-    set(data, rival.deck);
-  });
+  reDrawDeck(false);
 }
 function createMyHero() {
   my.heroData = createCard(true, true);
@@ -158,6 +158,7 @@ function Card(hero, card) {
     this.att = Math.ceil(Math.random() * 2);
     this.hp = Math.ceil(Math.random() * 5) + 25;
     this.hero = true;
+    this.field = true;
   } else {
     this.att = Math.ceil(Math.random() * 5);
     this.hp = Math.ceil(Math.random() * 5);
@@ -175,17 +176,23 @@ function init() {
   createRivalDeck(5);
   createMyHero();
   createRivalHero();
+  reDraw(true);
+  reDraw(false);
 }
 
 turnButton.addEventListener("click", function () {
+  var who = turn ? my : rival;
+  document.getElementById("rival").classList.toggle("turn");
+  document.getElementById("my").classList.toggle("turn");
+  reDrawField(who);
+  reDrawHero(who); 
+
   turn = !turn;
   if (turn) {
     rival.cost.textContent = 10;
   } else {
     my.cost.textContent = 10;
   }
-  document.getElementById("rival").classList.toggle("turn");
-  document.getElementById("my").classList.toggle("turn");
 });
 
 function getCard() {}
