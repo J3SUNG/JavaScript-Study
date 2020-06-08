@@ -51,7 +51,6 @@ function draw() {
 }
 
 init();
-randomCreate();
 draw();
 
 var clickFlag = false;
@@ -91,7 +90,77 @@ window.addEventListener("mouseup", function (event) {
       }
     }
     console.log(direction);
-    clickFlag = false;
-    dragFlag = false;
   }
+
+  clickFlag = false;
+  dragFlag = false;
+
+  switch (direction) {
+    case 0:
+      var newData = [[], [], [], []];
+      data.forEach(function (columnData, i) {
+        columnData.forEach(function (rowData, j) {
+          if (rowData) {
+            newData[j].push(rowData);
+          }
+        });
+      });
+      console.log(newData);
+      [1, 2, 3, 4].forEach(function (rowData, i) {
+        [1, 2, 3, 4].forEach(function (columnData, j) {
+          data[j][i] = newData[i][j] || 0;
+        });
+      });
+      break;
+    case 1:
+      var newData = [[], [], [], []];
+      data.forEach(function (columnData, i) {
+        columnData.forEach(function (rowData, j) {
+          if (rowData) {
+            newData[i].unshift(rowData);
+          }
+        });
+      });
+      console.log(newData);
+      [1, 2, 3, 4].forEach(function (rowData, i) {
+        [1, 2, 3, 4].forEach(function (columnData, j) {
+          data[i][3 - j] = newData[i][j] || 0;
+        });
+      });
+      break;
+    case 2:
+      var newData = [[], [], [], []];
+      data.forEach(function (columnData, i) {
+        columnData.forEach(function (rowData, j) {
+          if (rowData) {
+            newData[j].unshift(rowData);
+          }
+        });
+      });
+      console.log(newData);
+      [1, 2, 3, 4].forEach(function (rowData, i) {
+        [1, 2, 3, 4].forEach(function (columnData, j) {
+          data[3 - j][i] = newData[i][j] || 0;
+        });
+      });
+      break;
+    case 3:
+      var newData = [[], [], [], []];
+      data.forEach(function (columnData, i) {
+        columnData.forEach(function (rowData, j) {
+          if (rowData) {
+            newData[i].push(rowData);
+          }
+        });
+      });
+      console.log(newData);
+      [1, 2, 3, 4].forEach(function (columnData, i) {
+        [1, 2, 3, 4].forEach(function (rowData, j) {
+          data[i][j] = newData[i][j] || 0;
+        });
+      });
+      break;
+  }
+  draw();
+  randomCreate();
 });
