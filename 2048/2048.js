@@ -1,5 +1,11 @@
 var table = document.getElementById("table");
 var data = [];
+var setDirection = {
+  top: 0,
+  right: 1,
+  bottom: 2,
+  left: 3,
+};
 
 function init() {
   var fragment = document.createDocumentFragment();
@@ -48,21 +54,44 @@ init();
 randomCreate();
 draw();
 
+var clickFlag = false;
 var dragFlag = false;
 var startLocation;
 var endLocation;
 window.addEventListener("mousedown", function (event) {
-  console.log("mousedown", event);
-  dragFlag = true;
+  clickFlag = true;
   startLocation = [event.clientX, event.clientY];
 });
 window.addEventListener("mousemove", function (event) {
-  if (dragFlag) {
-    console.log("mousemove", event);
+  if (clickFlag) {
+    dragFlag = true;
   }
 });
 window.addEventListener("mouseup", function (event) {
-  console.log("mouseup", event);
-  dragFlag = false;
-  endLocation = [event.clientX, event.clientY];
+  if (dragFlag) {
+    endLocation = [event.clientX, event.clientY];
+    var direction;
+    var intervalX = endLocation[0] - startLocation[0];
+    var intervalY = endLocation[1] - startLocation[1];
+    if (Math.abs(intervalX) - Math.abs(intervalY) > 0) {
+      if (intervalX > 0) {
+        direction = setDirection.right;
+      } else if (intervalX < 0) {
+        direction = setDirection.left;
+      } else {
+        direction = setDirection.none;
+      }
+    } else {
+      if (intervalY > 0) {
+        direction = setDirection.bottom;
+      } else if (intervalY < 0) {
+        direction = setDirection.top;
+      } else {
+        direction = setDirection.none;
+      }
+    }
+    console.log(direction);
+    clickFlag = false;
+    dragFlag = false;
+  }
 });
