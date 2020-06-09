@@ -1,4 +1,5 @@
 var table = document.getElementById("table");
+var score = document.getElementById("score");
 var data = [];
 var setDirection = {
   top: 0,
@@ -32,10 +33,13 @@ function randomCreate() {
       }
     });
   });
-  console.log(emptyArray);
-  var randomCell = emptyArray[Math.floor(Math.random() * emptyArray.length)];
-  data[randomCell[0]][randomCell[1]] = 2;
-  draw();
+  if (emptyArray.length === 0) {
+    alert("게임오버 " + score.textContent);
+  } else {
+    var randomCell = emptyArray[Math.floor(Math.random() * emptyArray.length)];
+    data[randomCell[0]][randomCell[1]] = 2;
+    draw();
+  }
 }
 
 function draw() {
@@ -101,7 +105,17 @@ window.addEventListener("mouseup", function (event) {
       data.forEach(function (columnData, i) {
         columnData.forEach(function (rowData, j) {
           if (rowData) {
-            newData[j].push(rowData);
+            if (
+              newData[j][newData[j].length - 1] &&
+              newData[j][newData[j].length - 1] === rowData
+            ) {
+              newData[j][newData[j].length - 1] *= 2;
+              var currentScore = parseInt(score.textContent, 10);
+              score.textContent =
+                currentScore + newData[j][newData[j].length - 1];
+            } else {
+              newData[j].push(rowData);
+            }
           }
         });
       });
@@ -117,7 +131,13 @@ window.addEventListener("mouseup", function (event) {
       data.forEach(function (columnData, i) {
         columnData.forEach(function (rowData, j) {
           if (rowData) {
-            newData[i].unshift(rowData);
+            if (newData[i][0] && newData[i][0] === rowData) {
+              newData[i][0] *= 2;
+              var currentScore = parseInt(score.textContent, 10);
+              score.textContent = currentScore + newData[i][0];
+            } else {
+              newData[i].unshift(rowData);
+            }
           }
         });
       });
@@ -133,7 +153,13 @@ window.addEventListener("mouseup", function (event) {
       data.forEach(function (columnData, i) {
         columnData.forEach(function (rowData, j) {
           if (rowData) {
-            newData[j].unshift(rowData);
+            if (newData[j][0] && newData[j][0] === rowData) {
+              newData[j][0] *= 2;
+              var currentScore = parseInt(score.textContent, 10);
+              score.textContent = currentScore + newData[j][0];
+            } else {
+              newData[j].unshift(rowData);
+            }
           }
         });
       });
@@ -149,7 +175,17 @@ window.addEventListener("mouseup", function (event) {
       data.forEach(function (columnData, i) {
         columnData.forEach(function (rowData, j) {
           if (rowData) {
-            newData[i].push(rowData);
+            if (
+              newData[i][newData[i].length - 1] &&
+              newData[i][newData[i].length - 1] === rowData
+            ) {
+              newData[i][newData[i].length - 1] *= 2;
+              var currentScore = parseInt(score.textContent, 10);
+              score.textContent =
+                currentScore + newData[i][newData[i].length - 1];
+            } else {
+              newData[i].push(rowData);
+            }
           }
         });
       });
