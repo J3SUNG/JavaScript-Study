@@ -113,6 +113,7 @@ var blockDict = {
 };
 
 var tetrisData = [];
+var stopDown = false;
 
 function createCell() {
   var fragment = document.createDocumentFragment();
@@ -156,13 +157,22 @@ function createBlock() {
 }
 
 function blockDown() {
-  for (var i = tetrisData.length - 1; i < 0; ++i) {
+  stopDown = false;
+  for (var i = tetrisData.length - 1; i >= 0; --i) {
     tetrisData[i].forEach(function (td, j) {
       if (td > 0 && td < 10) {
-        tetrisData[i + 1][j] = td;
-        tetrisData[i][j] = 0;
+        if (tetrisData[i + 1] && !stopDown) {
+          tetrisData[i + 1][j] = td;
+          tetrisData[i][j] = 0;
+        } else {
+          stopDown = true;
+          tetrisData[i][j] = td * 10;
+        }
       }
-    })
+    });
+  }
+  if (stopDown) {
+    createBlock();
   }
   drawScreen();
 }
@@ -195,4 +205,4 @@ window.addEventListener("keyup", function (e) {
 
 createCell();
 createBlock();
-setInterval(blockDown, 1000);
+setInterval(blockDown, 100);
