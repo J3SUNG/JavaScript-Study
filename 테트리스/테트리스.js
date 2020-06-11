@@ -145,12 +145,25 @@ function createBlock() {
   block.forEach(function (tr, i) {
     console.log("tr : ", tr);
     tr.forEach(function (td, j) {
+      // TODO: 블록 생성 할 때 이미 차있으면 게임오버
       console.log("td : ", td);
       console.log("tetrisData : ", tetrisData);
       tetrisData[i][j + 3] = td;
     });
   });
   console.log("tetrisData!! : ", tetrisData);
+  drawScreen();
+}
+
+function blockDown() {
+  for (var i = tetrisData.length - 1; i < 0; ++i) {
+    tetrisData[i].forEach(function (td, j) {
+      if (td > 0 && td < 10) {
+        tetrisData[i + 1][j] = td;
+        tetrisData[i][j] = 0;
+      }
+    })
+  }
   drawScreen();
 }
 
@@ -182,3 +195,4 @@ window.addEventListener("keyup", function (e) {
 
 createCell();
 createBlock();
+setInterval(blockDown, 1000);
