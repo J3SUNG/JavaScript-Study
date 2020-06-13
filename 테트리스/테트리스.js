@@ -245,20 +245,50 @@ function drawScreen() {
   });
 }
 
-function createBlock() {
-  var block = blockArr[Math.floor(Math.random() * 7)][2];
-  console.log("block : ", block);
-  block.forEach(function (tr, i) {
-    console.log("tr : ", tr);
-    tr.forEach(function (td, j) {
-      // TODO: 블록 생성 할 때 이미 차있으면 게임오버
-      console.log("td : ", td);
-      console.log("tetrisData : ", tetrisData);
-      tetrisData[i][j + 3] = td;
+function draw() {
+  tetrisData.forEach((col, i) => {
+    col.forEach((row, j) => {
+      if (row > 0) {
+        // tetris.children[i].children[j].className = tetrisData[i][j] >= 10 ? colors[tetrisData[i][j] / 10 - 1]: ;
+      } else {
+        tetris.children[i].children[j].className = "";
+      }
     });
   });
-  console.log("tetrisData!! : ", tetrisData);
-  drawScreen();
+}
+
+function generate() {
+  if (!currentBlock) {
+    currentBlock = blocks[Math.floor(Math.random() * blocks.length)];
+  } else {
+    currentBlock = nextBlock;
+  }
+  currentBlock.currentShapeIndex = 0;
+  nextBlock = blocks[Math.floor(Math.random() * blocks.length)];
+  drawNext();
+  currentTopLeft = [-1, 3];
+  let isGameOver = false;
+  currentBlock.shape[0].slice(1).forEach((col, i) => {
+    col.forEach((row, j) => {
+      if (row && tetrisData[i][j + 3]) {
+        isGameOver = true;
+      }
+    });
+  });
+  currentBlock.shape[0].slice(1).forEach((col, i) => {
+    col.forEach((row, j) => {
+      if (row) {
+        tetrisData[i][j + 3] = currentBlock.numCode;
+      }
+    });
+  });
+  if (isGameOver) {
+    clearInterval(int);
+    draw();
+    alert("game over");
+  } else {
+    draw();
+  }
 }
 
 function blockDown() {
@@ -308,6 +338,6 @@ window.addEventListener("keyup", function (e) {
   }
 });
 
-createCell();
-createBlock();
-setInterval(blockDown, 100);
+//let int = setInterval(tick, 2000);
+init();
+generate();
