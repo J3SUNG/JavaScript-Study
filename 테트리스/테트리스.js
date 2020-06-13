@@ -291,6 +291,29 @@ function generate() {
   }
 }
 
+function checkRows() {
+  const fullRows = [];
+  tetrisData.forEach((col, i) => {
+    let count = 0;
+    col.forEach((row, j) => {
+      if (row > 0) {
+        ++count;
+      }
+    });
+    if (count === 10) {
+      fullRows.push(i);
+    }
+  });
+  const fullRowsCount = fullRows.length;
+  tetrisData = tetrisData.filter((row, i) => !fullRows.includes(i));
+  for (let i = 0; i < fullRowsCount; ++i) {
+    tetrisData.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  }
+  let score = parseInt(document.getElementById("score").textContent, 10);
+  score += fullRowsCount ** 2;
+  document.getElementById("score").textContent = String(score);
+}
+
 function tick() {
   const nextTopLeft = [currentTopLeft[0] + 1, currentTopLeft[1]];
   const activeBlocks = [];
