@@ -291,6 +291,52 @@ function generate() {
   }
 }
 
+function tick() {
+  const nextTopLeft = [currentTopLeft[0] + 1, currentTopLeft[1]];
+  const activeBlocks = [];
+  let canGoDown = true;
+  let currentBlockShape = currentBlock.shape[currentBlock.currentShapeIndex];
+  for (
+    let i = currentTopLeft[0];
+    i < currentTopLeft[0] + currentBlockShape.length;
+    ++i
+  ) {
+    if (i < 0 || i >= 20) continue;
+    for (
+      let j = currentTopLeft[1];
+      j < currentTopLeft[1] + currentBlockShape.length;
+      ++j
+    ) {
+      if (isActiveBlock(tetrisData[i][j])) {
+        activeBlocks.push([i, j]);
+        if (isActiveBlock(tetrisData[i + 1] && tetrisData[i + 1][j])) {
+          canGoDown = false;
+        }
+      }
+    }
+  }
+  if (!canGoDown) {
+    activeBlocks.forEach((blocks) => {
+      tetrisData[blocks[0]][blocks[1]] *= 10;
+    });
+    checkRows();
+    generate();
+    return false;
+  } else if (canGoDown) {
+    for (let i = tetrisData.length - 1; i >= 0; --i) {
+      const col = tetrisData[i];
+      col.forEach((row, j) => {
+        if (row < 10 && tetrisData[i + 1] && tetrisData[i + 1][j] < 10) {
+          tetrisData[i + 1][j] = row;
+          tetrisData[i][j] = 0;
+        }
+      });
+    }
+    currentTopLeft = nextTopLeft;
+    draw();
+    return true;
+  }
+}
 function blockDown() {
   stopDown = false;
   for (var i = tetrisData.length - 1; i >= 0; --i) {
