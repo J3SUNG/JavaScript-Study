@@ -1,5 +1,53 @@
 var tetris = document.querySelector("#tetris");
-
+var tetrisData = [];
+var currentBlock;
+var nextBlock;
+var currentTopLeft = [0, 3];
+var blocks = [
+  {
+    name: "s",
+    center: false,
+    numCode: 1,
+    color: "red",
+    currentShapeIndex: 0,
+    shape: [
+      [
+        [0, 0, 0],
+        [0, 1, 1],
+        [0, 1, 1],
+      ],
+    ],
+  },
+  {
+    name: "t",
+    center: true,
+    numCode: 2,
+    color: "orange",
+    currentShapeIndex: 0,
+    shape: [
+      [
+        [0, 0, 0],
+        [1, 1, 1],
+        [0, 1, 0],
+      ],
+      [
+        [0, 1, 0],
+        [1, 1, 0],
+        [0, 1, 0],
+      ],
+      [
+        [0, 1, 0],
+        [1, 1, 1],
+        [0, 0, 0],
+      ],
+      [
+        [0, 1, 0],
+        [0, 1, 1],
+        [0, 1, 0],
+      ],
+    ],
+  },
+];
 var blockArr = [
   [
     "red",
@@ -112,7 +160,6 @@ var blockDict = {
   70: ["yellow", false, []],
 };
 
-var tetrisData = [];
 var stopDown = false;
 
 function createCell() {
