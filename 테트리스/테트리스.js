@@ -199,118 +199,25 @@ var blocks = [
   },
 ];
 
-var blockArr = [
-  [
-    "red",
-    true,
-    [
-      [1, 1],
-      [1, 1],
-    ],
-  ],
-  [
-    "blue",
-    true,
-    [
-      [0, 2, 0],
-      [2, 2, 2],
-    ],
-  ],
-  [
-    "orange",
-    true,
-    [
-      [3, 3, 0],
-      [0, 3, 3],
-    ],
-  ],
-  [
-    "skyblue",
-    true,
-    [
-      [0, 4, 4],
-      [4, 4, 0],
-    ],
-  ],
-  [
-    "yellowgreen",
-    true,
-    [
-      [5, 5, 5],
-      [5, 0, 0],
-    ],
-  ],
-  [
-    "pink",
-    true,
-    [
-      [6, 6, 6],
-      [0, 0, 6],
-    ],
-  ],
-  ["yellow", true, [[7, 7, 7, 7]]],
-];
+const colors = ["red", "orange", "yellow", "green", "blue", "navy", "violet"];
 
-var blockDict = {
-  0: ["white", false, []],
-  1: [
-    "red",
-    true,
-    [
-      [1, 1],
-      [1, 1],
-    ],
-  ],
-  2: [
-    "blue",
-    true,
-    [
-      [0, 1, 0],
-      [1, 1, 1],
-    ],
-  ],
-  3: [
-    "orange",
-    true,
-    [
-      [1, 1, 0],
-      [0, 1, 1],
-    ],
-  ],
-  4: [
-    "skyblue",
-    true,
-    [
-      [0, 1, 1],
-      [1, 1, 0],
-    ],
-  ],
-  5: [
-    "yellowgreen",
-    true,
-    [
-      [1, 1, 1],
-      [1, 0, 0],
-    ],
-  ],
-  6: [
-    "pink",
-    true,
-    [
-      [1, 1, 1],
-      [0, 0, 1],
-    ],
-  ],
-  7: ["yellow", true, [[1, 1, 1, 1]]],
-  10: ["red", false, []],
-  20: ["blue", false, []],
-  30: ["orange", false, []],
-  40: ["skyblue", false, []],
-  50: ["yellowgreen", false, []],
-  60: ["pink", false, []],
-  70: ["yellow", false, []],
-};
+const isActiveBlock = (value) => value > 0 && value < 10;
+const isInvalidBlock = (value) => value === undefined || value >= 10;
 
+function init() {
+  const fragment = document.createDocumentFragment();
+  [...Array(20).keys()].forEach((col, i) => {
+    const tr = document.createElement("tr");
+    fragment.appendChild(tr);
+    [...Array(10).keys()].forEach((row, j) => {
+      const td = document.createElement("td");
+      tr.appendChild(td);
+    });
+    const column = Array(10).fill(0);
+    tetrisData.push(column);
+  });
+  tetris.appendChild(fragment);
+}
 var stopDown = false;
 
 function createCell() {
