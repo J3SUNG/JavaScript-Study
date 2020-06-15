@@ -290,7 +290,7 @@ function checkRows() {
     let count = 0;
     col.forEach((row, j) => {
       if (row > 0) {
-        count++;
+        ++count;
       }
     });
     if (count === 10) {
@@ -299,7 +299,7 @@ function checkRows() {
   });
   const fullRowsCount = fullRows.length;
   tetrisData = tetrisData.filter((row, i) => !fullRows.includes(i));
-  for (let i = 0; i < fullRowsCount; i++) {
+  for (let i = 0; i < fullRowsCount; ++i) {
     tetrisData.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   }
 
@@ -316,13 +316,13 @@ function tick() {
   for (
     let i = currentTopLeft[0];
     i < currentTopLeft[0] + currentBlockShape.length;
-    i++
+    ++i
   ) {
     if (i < 0 || i >= 20) continue;
     for (
       let j = currentTopLeft[1];
       j < currentTopLeft[1] + currentBlockShape.length;
-      j++
+      ++j
     ) {
       if (isActiveBlock(tetrisData[i][j])) {
         activeBlocks.push([i, j]);
@@ -386,13 +386,13 @@ window.addEventListener("keydown", (e) => {
       for (
         let i = currentTopLeft[0];
         i < currentTopLeft[0] + currentBlockShape.length;
-        i++
+        ++i
       ) {
         if (!isMovable) break;
         for (
           let j = currentTopLeft[1];
           j < currentTopLeft[1] + currentBlockShape.length;
-          j++
+          ++j
         ) {
           if (!tetrisData[i] || !tetrisData[i][j]) continue;
           if (
@@ -406,7 +406,7 @@ window.addEventListener("keydown", (e) => {
       if (isMovable) {
         currentTopLeft = nextTopLeft;
         tetrisData.forEach((col, i) => {
-          for (var j = 0; j < col.length; j++) {
+          for (var j = 0; j < col.length; ++j) {
             const row = col[j];
             if (tetrisData[i][j - 1] === 0 && row < 10) {
               tetrisData[i][j - 1] = row;
@@ -426,13 +426,13 @@ window.addEventListener("keydown", (e) => {
       for (
         let i = currentTopLeft[0];
         i < currentTopLeft[0] + currentBlockShape.length;
-        i++
+        ++i
       ) {
         if (!isMovable) break;
         for (
           let j = currentTopLeft[1];
           j < currentTopLeft[1] + currentBlockShape.length;
-          j++
+          ++j
         ) {
           if (!tetrisData[i] || !tetrisData[i][j]) continue;
           if (
@@ -478,13 +478,13 @@ window.addEventListener("keyup", (e) => {
       for (
         let i = currentTopLeft[0];
         i < currentTopLeft[0] + currentBlockShape.length;
-        i++
+        ++i
       ) {
         if (!isChangeable) break;
         for (
           let j = currentTopLeft[1];
           j < currentTopLeft[1] + currentBlockShape.length;
-          j++
+          ++j
         ) {
           if (!tetrisData[i]) continue;
           if (
@@ -502,12 +502,12 @@ window.addEventListener("keyup", (e) => {
         for (
           let i = currentTopLeft[0];
           i < currentTopLeft[0] + currentBlockShape.length;
-          i++
+          ++i
         ) {
           for (
             let j = currentTopLeft[1];
             j < currentTopLeft[1] + currentBlockShape.length;
-            j++
+            ++j
           ) {
             if (!tetrisData[i]) continue;
             let nextBlockShapeCell =
