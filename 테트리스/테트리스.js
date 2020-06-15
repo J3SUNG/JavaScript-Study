@@ -80,7 +80,7 @@ var blocks = [
     name: "zr",
     center: true,
     numCode: 4,
-    color: "grren",
+    color: "green",
     startRow: 1,
     currentShapeIndex: 0,
     shape: [
@@ -119,14 +119,14 @@ var blocks = [
         [1, 0, 0],
       ],
       [
-        [0, 0, 0],
-        [1, 1, 1],
-        [1, 0, 0],
-      ],
-      [
         [1, 1, 0],
         [0, 1, 0],
         [0, 1, 0],
+      ],
+      [
+        [0, 0, 1],
+        [1, 1, 1],
+        [0, 0, 0],
       ],
       [
         [0, 1, 0],
@@ -187,7 +187,7 @@ var blocks = [
         [0, 0, 0, 0],
         [1, 1, 1, 1],
         [0, 0, 0, 0],
-        [0, 1, 0, 0],
+        [0, 0, 0, 0],
       ],
       [
         [0, 0, 1, 0],
@@ -218,40 +218,31 @@ function init() {
   });
   tetris.appendChild(fragment);
 }
-var stopDown = false;
-
-function createCell() {
-  var fragment = document.createDocumentFragment();
-  for (var i = 0; i < 20; ++i) {
-    var tr = document.createElement("tr");
-    var arr = [];
-    tetrisData.push(arr);
-    fragment.appendChild(tr);
-    for (var j = 0; j < 10; ++j) {
-      var td = document.createElement("td");
-      tr.appendChild(td);
-      arr.push(0);
-    }
-  }
-  console.log(tetris, fragment);
-  tetris.appendChild(fragment);
-}
-
-function drawScreen() {
-  tetrisData.forEach(function (tr, i) {
-    tr.forEach(function (td, j) {
-      tetris.children[i].children[j].className = blockDict[td][0];
-    });
-  });
-}
 
 function draw() {
   tetrisData.forEach((col, i) => {
     col.forEach((row, j) => {
       if (row > 0) {
-        // tetris.children[i].children[j].className = tetrisData[i][j] >= 10 ? colors[tetrisData[i][j] / 10 - 1]: ;
+        tetris.children[i].children[j].className =
+          tetrisData[i][j] >= 10
+            ? colors[tetrisData[i][j] / 10 - 1]
+            : colors[tetrisData[i][j] - 1];
       } else {
         tetris.children[i].children[j].className = "";
+      }
+    });
+  });
+}
+
+function drawNext() {
+  const nextTable = document.getElementById("next-table");
+  nextTable.querySelectorAll("tr").forEach((col, i) => {
+    Array.from(col.children).forEach((row, j) => {
+      if (nextBlock.shape[0][i] && nextBlock.shape[0][i][j] > 0) {
+        nextTable.querySelectorAll("tr")[i].children[j].className =
+          colors[nextBlock.numCode - 1];
+      } else {
+        nextTable.querySelectorAll("tr")[i].children[j].className = "white";
       }
     });
   });
@@ -265,6 +256,7 @@ function generate() {
   }
   currentBlock.currentShapeIndex = 0;
   nextBlock = blocks[Math.floor(Math.random() * blocks.length)];
+
   drawNext();
   currentTopLeft = [-1, 3];
   let isGameOver = false;
@@ -282,6 +274,7 @@ function generate() {
       }
     });
   });
+
   if (isGameOver) {
     clearInterval(int);
     draw();
@@ -297,7 +290,7 @@ function checkRows() {
     let count = 0;
     col.forEach((row, j) => {
       if (row > 0) {
-        ++count;
+        count++;
       }
     });
     if (count === 10) {
@@ -306,9 +299,10 @@ function checkRows() {
   });
   const fullRowsCount = fullRows.length;
   tetrisData = tetrisData.filter((row, i) => !fullRows.includes(i));
-  for (let i = 0; i < fullRowsCount; ++i) {
+  for (let i = 0; i < fullRowsCount; i++) {
     tetrisData.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   }
+
   let score = parseInt(document.getElementById("score").textContent, 10);
   score += fullRowsCount ** 2;
   document.getElementById("score").textContent = String(score);
@@ -322,17 +316,17 @@ function tick() {
   for (
     let i = currentTopLeft[0];
     i < currentTopLeft[0] + currentBlockShape.length;
-    ++i
+    i++
   ) {
     if (i < 0 || i >= 20) continue;
     for (
       let j = currentTopLeft[1];
       j < currentTopLeft[1] + currentBlockShape.length;
-      ++j
+      j++
     ) {
       if (isActiveBlock(tetrisData[i][j])) {
         activeBlocks.push([i, j]);
-        if (isActiveBlock(tetrisData[i + 1] && tetrisData[i + 1][j])) {
+        if (isInvalidBlock(tetrisData[i + 1] && tetrisData[i + 1][j])) {
           canGoDown = false;
         }
       }
@@ -346,7 +340,7 @@ function tick() {
     generate();
     return false;
   } else if (canGoDown) {
-    for (let i = tetrisData.length - 1; i >= 0; --i) {
+    for (let i = tetrisData.length - 1; i >= 0; i--) {
       const col = tetrisData[i];
       col.forEach((row, j) => {
         if (row < 10 && tetrisData[i + 1] && tetrisData[i + 1][j] < 10) {
@@ -360,53 +354,182 @@ function tick() {
     return true;
   }
 }
-function blockDown() {
-  stopDown = false;
-  for (var i = tetrisData.length - 1; i >= 0; --i) {
-    tetrisData[i].forEach(function (td, j) {
-      if (td > 0 && td < 10) {
-        if (tetrisData[i + 1] && !stopDown) {
-          tetrisData[i + 1][j] = td;
-          tetrisData[i][j] = 0;
-        } else {
-          stopDown = true;
-          tetrisData[i][j] = td * 10;
-        }
-      }
-    });
-  }
-  if (stopDown) {
-    createBlock();
-  }
-  drawScreen();
-}
 
-window.addEventListener("keydown", function (e) {
-  console.log(e);
-  switch (e.code) {
-    case "ArrowRight":
-      break;
-    case "ArrowLeft":
-      break;
-    case "ArrowDown":
-      break;
-    default:
-      break;
-  }
-});
-
-window.addEventListener("keyup", function (e) {
-  console.log(e);
-  switch (e.code) {
-    case "Space":
-      break;
-    case "ArrowUp":
-      break;
-    default:
-      break;
-  }
-});
-
-//let int = setInterval(tick, 2000);
+let int = setInterval(tick, 2000);
 init();
 generate();
+
+document.getElementById("stop").addEventListener("click", function () {
+  clearInterval(int);
+});
+document.getElementById("start").addEventListener("click", function () {
+  if (int) {
+    clearInterval(int);
+  }
+  int = setInterval(tick, 2000);
+});
+document.getElementById("mute").addEventListener("click", function () {
+  if (document.getElementById("bgm").paused) {
+    document.getElementById("bgm").play();
+  } else {
+    document.getElementById("bgm").pause();
+  }
+});
+
+window.addEventListener("keydown", (e) => {
+  switch (e.code) {
+    case "ArrowLeft": {
+      const nextTopLeft = [currentTopLeft[0], currentTopLeft[1] - 1];
+      let isMovable = true;
+      let currentBlockShape =
+        currentBlock.shape[currentBlock.currentShapeIndex];
+      for (
+        let i = currentTopLeft[0];
+        i < currentTopLeft[0] + currentBlockShape.length;
+        i++
+      ) {
+        if (!isMovable) break;
+        for (
+          let j = currentTopLeft[1];
+          j < currentTopLeft[1] + currentBlockShape.length;
+          j++
+        ) {
+          if (!tetrisData[i] || !tetrisData[i][j]) continue;
+          if (
+            isActiveBlock(tetrisData[i][j]) &&
+            isInvalidBlock(tetrisData[i] && tetrisData[i][j - 1])
+          ) {
+            isMovable = false;
+          }
+        }
+      }
+      if (isMovable) {
+        currentTopLeft = nextTopLeft;
+        tetrisData.forEach((col, i) => {
+          for (var j = 0; j < col.length; j++) {
+            const row = col[j];
+            if (tetrisData[i][j - 1] === 0 && row < 10) {
+              tetrisData[i][j - 1] = row;
+              tetrisData[i][j] = 0;
+            }
+          }
+        });
+        draw();
+      }
+      break;
+    }
+    case "ArrowRight": {
+      const nextTopLeft = [currentTopLeft[0], currentTopLeft[1] + 1];
+      let isMovable = true;
+      let currentBlockShape =
+        currentBlock.shape[currentBlock.currentShapeIndex];
+      for (
+        let i = currentTopLeft[0];
+        i < currentTopLeft[0] + currentBlockShape.length;
+        i++
+      ) {
+        if (!isMovable) break;
+        for (
+          let j = currentTopLeft[1];
+          j < currentTopLeft[1] + currentBlockShape.length;
+          j++
+        ) {
+          if (!tetrisData[i] || !tetrisData[i][j]) continue;
+          if (
+            isActiveBlock(tetrisData[i][j]) &&
+            isInvalidBlock(tetrisData[i] && tetrisData[i][j + 1])
+          ) {
+            isMovable = false;
+          }
+        }
+      }
+      if (isMovable) {
+        currentTopLeft = nextTopLeft;
+        tetrisData.forEach((col, i) => {
+          for (var j = col.length - 1; j >= 0; j--) {
+            const row = col[j];
+            if (tetrisData[i][j + 1] === 0 && row < 10) {
+              tetrisData[i][j + 1] = row;
+              tetrisData[i][j] = 0;
+            }
+          }
+        });
+        draw();
+      }
+      break;
+    }
+    case "ArrowDown": {
+      tick();
+    }
+  }
+});
+
+window.addEventListener("keyup", (e) => {
+  switch (e.code) {
+    case "ArrowUp": {
+      let currentBlockShape =
+        currentBlock.shape[currentBlock.currentShapeIndex];
+      let isChangeable = true;
+      const nextShapeIndex =
+        currentBlock.currentShapeIndex + 1 === currentBlock.shape.length
+          ? 0
+          : currentBlock.currentShapeIndex + 1;
+      const nextBlockShape = currentBlock.shape[nextShapeIndex];
+      for (
+        let i = currentTopLeft[0];
+        i < currentTopLeft[0] + currentBlockShape.length;
+        i++
+      ) {
+        if (!isChangeable) break;
+        for (
+          let j = currentTopLeft[1];
+          j < currentTopLeft[1] + currentBlockShape.length;
+          j++
+        ) {
+          if (!tetrisData[i]) continue;
+          if (
+            nextBlockShape[i - currentTopLeft[0]][j - currentTopLeft[1]] > 0 &&
+            isInvalidBlock(tetrisData[i] && tetrisData[i][j])
+          ) {
+            isChangeable = false;
+          }
+        }
+      }
+      if (isChangeable) {
+        while (currentTopLeft[0] < 0) {
+          tick();
+        }
+        for (
+          let i = currentTopLeft[0];
+          i < currentTopLeft[0] + currentBlockShape.length;
+          i++
+        ) {
+          for (
+            let j = currentTopLeft[1];
+            j < currentTopLeft[1] + currentBlockShape.length;
+            j++
+          ) {
+            if (!tetrisData[i]) continue;
+            let nextBlockShapeCell =
+              nextBlockShape[i - currentTopLeft[0]][j - currentTopLeft[1]];
+            if (nextBlockShapeCell > 0 && tetrisData[i][j] === 0) {
+              tetrisData[i][j] = currentBlock.numCode;
+            } else if (
+              nextBlockShapeCell === 0 &&
+              tetrisData[i][j] &&
+              tetrisData[i][j] < 10
+            ) {
+              tetrisData[i][j] = 0;
+            }
+          }
+        }
+        currentBlock.currentShapeIndex = nextShapeIndex;
+      }
+      draw();
+      break;
+    }
+    case "Space":
+      while (tick()) {}
+      break;
+  }
+});
