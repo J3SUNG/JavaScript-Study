@@ -24,3 +24,14 @@ console.log(daysOfWeek[3]);
 nonsense.push("New");
 
 console.log(nonsense);
+
+const player = { name: "j3sung", points: 10, fat: false };
+
+console.log(player);
+console.log(player.name);
+console.log(player.points);
+console.log(player.fat);
+
+player.lastName = "Lee";
+
+console.log(player);
