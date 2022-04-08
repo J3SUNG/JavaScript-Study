@@ -8,7 +8,17 @@ function handleTitleClick() {
   }
 }
 
+function handleMouseEnter() {
+  console.log("mouse is here");
+}
+
+function handleMouseLeave() {
+  console.log("mouse is not here");
+}
+
 console.dir(title);
 
 title.style.color = "blue";
 title.addEventListener("click", handleTitleClick);
+title.addEventListener("mouseenter", handleMouseEnter);
+title.addEventListener("mouseleave", handleMouseLeave);
