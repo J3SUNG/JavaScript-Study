@@ -10,6 +10,7 @@ const h1 = document.querySelector("div.hello:first-child h1");
 // }
 
 function handleTitleClick() {
+  // toggle
   h1.classList.toggle("clicked");
 }
 
