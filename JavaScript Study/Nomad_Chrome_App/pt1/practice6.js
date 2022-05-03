@@ -30,11 +30,11 @@ function handleWindowCopy() {
 }
 
 function handleWindowOffline() {
-  alert("SOS no WIFI");
+  alert("SOS no WIFI!");
 }
 
 function handleWindowOnline() {
-  alert("All Good");
+  alert("All Good!");
 }
 
 h1.onclick = handleTitleClick;
