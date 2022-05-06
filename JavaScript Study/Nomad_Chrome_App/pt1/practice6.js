@@ -30,7 +30,7 @@ function handleWindowCopy() {
 }
 
 function handleWindowOffline() {
-  alert("SOS no WIFI");
+  alert("SOS no WIFI.");
 }
 
 function handleWindowOnline() {
