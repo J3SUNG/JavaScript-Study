@@ -1,6 +1,5 @@
 const clock = document.querySelector("h2#clock");
 
-// clock.innerText = "Hey";
 function getClock() {
   const date = new Date();
   let hour = String(date.getHours()).padStart(2, "0");
