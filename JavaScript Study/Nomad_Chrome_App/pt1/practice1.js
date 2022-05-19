@@ -7,7 +7,7 @@ console.log(a / b);
 
 const type1 = true;
 const type2 = false;
-const type3 = null; // 정의되어있다 비어있다
+const type3 = null; // 정의되어있다, 비어있다
 const type4 = undefined; // 정의되지않았다
 
 console.log(type1);
