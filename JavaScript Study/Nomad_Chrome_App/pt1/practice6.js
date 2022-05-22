@@ -8,6 +8,7 @@ const h1 = document.querySelector("div.hello:first-child h1");
 //     h1.classList.add(clickedClass);
 //   }
 // }
+
 function handleTitleClick() {
   h1.classList.toggle("clicked");
 }
