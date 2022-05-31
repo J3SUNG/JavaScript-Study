@@ -5,7 +5,7 @@ const toDoList = document.getElementById("todo-list");
 function handleToDoSubmit(event) {
   event.preventDefault();
   const newTodo = toDoInput.value;
-  toDoInput.value = "";
+  toDoInput.value = " ";
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
