@@ -1,4 +1,6 @@
-console.log("Hello, JS");
+var myGlobalVar = 1;
+const myGlobalConst = 1;
 
-console.log("run extension");
-console.log(`ctrl + art + n`);
+function myGlobalFunc() {}
+
+console.log(globalThis.myGlobalVar, globalThis.myGlobalConst, globalThis.myGlobalFunc);
