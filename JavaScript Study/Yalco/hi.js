@@ -34,3 +34,9 @@ for (const item of arrLike) {
 for (const item of Array.from(arrLike)) {
   console.log(item);
 }
+
+const arr1 = [1, 2, 3];
+const arr2 = Array.from(arr1);
+arr2.push(4);
+
+console.log(arr1, arr2);
