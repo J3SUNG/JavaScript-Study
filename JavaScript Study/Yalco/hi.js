@@ -1,18 +1,13 @@
-function classIntro(classNo, teacher, ...children) {
-  return `${classNo}반의 선생님은 ${teacher}, ` + `학생들은 ${children.join(", ")}입니다.`;
-}
+const orgArr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// 4 ~ 6을 제외한 새 배열 만들기
 
-const classNo = 3;
-const teacher = "김민지";
-const students = ["영희", "철수", "보라", "돌준", "달숙"];
+// 💡 slice는 원본을 변경하지 않음
+const arr1 = [...orgArr.slice(0, 3), ...orgArr.slice(6, 9)];
+console.log(arr1);
 
-console.log(classIntro(classNo, teacher, ...students));
+// 참고: 또 다른 방법
+const arr2 = orgArr.filter((_, i) => !(i >= 3 && i < 6));
+console.log(arr2);
 
-const arr1 = [1, 2, 3];
-const arr2 = [...arr1];
-
-console.log(arr1 === arr2);
-
-arr1[0] = 0;
-
-console.log(arr1, arr2);
+// 원본은 유지
+console.log(orgArr);
