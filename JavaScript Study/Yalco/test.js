@@ -20,3 +20,18 @@ errorFuncs.forEach((func) => {
     console.error("아니, 뭘 한 거에요?");
   }
 });
+
+const obj = {
+  x: 1,
+  y: 2,
+
+  func1: function () {
+    console.log("1.", this);
+  },
+  func2() {
+    console.log("2.", this);
+  },
+  func3: () => {
+    console.log("3.", this);
+  },
+};
