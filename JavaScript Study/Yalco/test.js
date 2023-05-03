@@ -35,3 +35,34 @@ const obj = {
     console.log("3.", this);
   },
 };
+
+const outer = {
+  a: true,
+  b: false,
+
+  func: function () {
+    const inner = {
+      x: 1,
+      y: 2,
+
+      func1: function () {
+        console.log("1.", this);
+      },
+      func2() {
+        console.log("2.", this);
+      },
+      func3: () => {
+        console.log("3.", this);
+      },
+    };
+
+    // this가 inner를 가리킴
+    inner.func1();
+    inner.func2();
+
+    // this가 outer를 가리킴
+    inner.func3();
+  },
+};
+
+outer.func();
