@@ -56,7 +56,6 @@ const outer = {
       },
     };
 
-    // this가 inner를 가리킴
     inner.func1();
     inner.func2();
 
