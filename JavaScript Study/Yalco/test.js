@@ -59,7 +59,6 @@ const outer = {
     inner.func1();
     inner.func2();
 
-    // this가 outer를 가리킴
     inner.func3();
   },
 };
