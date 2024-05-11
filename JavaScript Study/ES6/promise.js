@@ -74,3 +74,9 @@ fetch("https://yts.am/api/v2/list_movies.json")
   .then((response) => response.json())
   .then((json) => console.log(json))
   .catch((error) => console.log(error));
+
+// Promise.allSettled 메서드로 모든 promise 객체가 처리될 때까지 기다림
+// Promise.all과 달리 promise 객체가 reject되어도 기다림
+// 모든 promise가 동시에 동작하는지 확인해야한다면, Promise.all을 사용
+// 모든 promise가 잘 동작하는지 확인할 필요가 없다면, Promise.allSettled를 사용
+Promise.allSettled([p1, p2, p3]).then((values) => console.log(values));
