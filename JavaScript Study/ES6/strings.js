@@ -100,3 +100,8 @@ console.log(text.trim()); // Hello
 // trimEnd (문자열 뒤 공백 제거)
 console.log(text.trimStart()); // Hello
 console.log(text.trimEnd()); //   Hello
+
+// replaceAll (문자열 전체 치환)
+const word = "Hello World Hello";
+console.log(word.replace("Hello", "Hi")); // Hi World Hello
+console.log(word.replaceAll("Hello", "Hi")); // Hi World Hi

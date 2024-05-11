@@ -80,3 +80,11 @@ fetch("https://yts.am/api/v2/list_movies.json")
 // 모든 promise가 동시에 동작하는지 확인해야한다면, Promise.all을 사용
 // 모든 promise가 잘 동작하는지 확인할 필요가 없다면, Promise.allSettled를 사용
 Promise.allSettled([p1, p2, p3]).then((values) => console.log(values));
+
+// Promise.any 메서드로 가장 빠른 promise 객체를 출력
+// Promise.any와 Promise.race의 차이점은 reject된 promise 객체가 있을 때 동작 방식이다.
+// Promise.any는 reject된 promise 객체가 있어도 가장 빠른 promise 객체
+// Promise.race는 reject된 promise 객체가 있으면 바로 catch로 이동
+Promise.any([p1, p2, p3])
+  .then((value) => console.log(value))
+  .catch((error) => console.log(error));

@@ -15,3 +15,35 @@ const arr = [
   ["age", 3],
 ];
 console.log(Object.fromEntries(arr)); // {name: "jetty", age: 3}
+
+// Object.assign(target, ...sources) 객체를 병합한다.
+// 얕은 복사를 한다.
+// 중첩 객체는 참조값을 복사한다.
+
+const user = {
+  name: "jetty",
+  age: 3,
+};
+
+const info = {
+  country: "Korea",
+};
+
+const info2 = {
+  city: "Seoul",
+};
+
+const userWithInfo = Object.assign(user, info, info2);
+
+console.log(userWithInfo); // {name: "jetty", age: 3, country: "Korea", city: "Seoul"}
+
+// Object.hasOwnProperty(key) 객체가 특정 프로퍼티를 가지고 있는지 확인한다.
+// Object.hasOwn(obj, key) 객체가 특정 프로퍼티를 가지고 있는지 확인한다.
+// key in obj 객체가 특정 프로퍼티를 가지고 있는지 확인한다.
+const obj = {
+  name: "cola",
+};
+
+console.log(obj.hasOwnProperty("name"));
+console.log(Object.hasOwn(obj, "name"));
+console.log("name" in obj);

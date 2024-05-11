@@ -61,3 +61,21 @@ const numbers = [3, 2, 1, 5, 4];
 numbers.sort((a, b) => a - b);
 
 console.log(numbers); // [1, 2, 3, 4, 5]
+
+// Array.reverse 배열을 역순으로 정렬하는 메소드
+numbers.reverse();
+
+console.log(numbers); // [5, 4, 3, 2, 1]
+
+// Array.reduce 배열을 순회하면서 값을 누적하는 메소드
+const sum = numbers.reduce((acc, cur) => acc + cur, 0);
+
+console.log(sum); // 15
+
+// Array.at 배열의 특정 인덱스 요소를 반환하는 메소드
+const arr4 = [1, 2, 3, 4, 5];
+const first = arr4.at(0);
+const last = arr4.at(-1);
+
+console.log(first); // 1
+console.log(last); // 5

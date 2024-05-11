@@ -124,3 +124,42 @@ class Counter {
     this.counter.innerText = this.count;
   };
 }
+
+// ECMA2022
+// Class field declarations
+class Person {
+  name = "Jetty";
+  sayHello = () => {
+    console.log(`Hello, I'm ${this.name}`);
+  };
+}
+
+// Class private fields and methods
+class Person2 {
+  #name = "Jetty";
+  get name() {
+    this.#sayHello();
+    return this.#name;
+  }
+  set name(value) {
+    this.#name = value;
+  }
+  #sayHello() {
+    console.log(`Hello, I'm ${this.#name}`);
+  }
+}
+
+// Class static fields and methods
+class Article {
+  static publisher = "Jetty";
+  static printPublisher() {
+    console.log(Article.publisher);
+  }
+}
+
+console.log(Article.publisher); // Jetty
+Article.printPublisher(); // Jetty
+
+const article = new Article();
+// console.log(article.publisher); // undefined
+// article.printPublisher(); // error
