@@ -10,7 +10,7 @@ const getTemplate = () => {
 
 const addEvents = (targetElement, events) => {
   targetElement.querySelector(".new-todo").addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && e.target.value !== "") {
       events.addItem(e.target.value);
       e.target.value = "";
     }
