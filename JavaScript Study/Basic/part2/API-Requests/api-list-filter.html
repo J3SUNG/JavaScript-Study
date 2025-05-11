@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API 데이터 리스트와 필터링</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .controls {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    
+    input {
+      padding: 8px;
+      flex-grow: 1;
+    }
+    
+    button {
+      padding: 8px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    select {
+      padding: 8px;
+    }
+    
+    .user-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+    }
+    
+    .user-card {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 15px;
+    }
+    
+    .user-card h3 {
+      margin-top: 0;
+      color: #333;
+    }
+    
+    .user-card .email {
+      color: #666;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+    
+    .user-card .company {
+      font-weight: bold;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 20px;
+      color: #666;
+      font-style: italic;
+    }
+    
+    .error {
+      color: #f44336;
+      padding: 10px;
+      border: 1px solid #f44336;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+    
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>사용자 목록</h1>
+  
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="이름으로 검색...">
+    <select id="sortSelect">
+      <option value="name">이름순</option>
+      <option value="company">회사명순</option>
+    </select>
+    <button id="loadButton">사용자 불러오기</button>
+  </div>
+  
+  <div id="error" class="error" style="display: none;"></div>
+  
+  <div id="userList" class="user-list">
+    <!-- 사용자 목록이 여기에 표시됩니다 -->
+  </div>
+  
+  <script>
+    // 문제: 다음 요구사항을 만족하는 API 데이터 리스트와 필터링 기능을 구현하세요.
+    // 1. async/await를 사용하여 'https://jsonplaceholder.typicode.com/users' API에서 사용자 목록을 불러오세요.
+    // 2. 불러온 사용자 데이터를 카드 형태로 표시하세요 (이름, 이메일, 회사명).
+    // 3. 검색창에 입력 시 실시간으로 이름 기준 필터링 기능을 구현하세요.
+    // 4. 드롭다운에서 정렬 방식 선택 시 해당 기준으로 정렬하는 기능을 구현하세요.
+    // 5. 로딩 중일 때와 오류 발생 시 적절한 UI 피드백을 제공하세요.
+    // 6. 필터링 결과가 없을 때 "검색 결과가 없습니다" 메시지를 표시하세요.
+    // 시간: 약 5분
+    
+    // 여기에 코드를 작성하세요
+    
+  </script>
+</body>
+</html>

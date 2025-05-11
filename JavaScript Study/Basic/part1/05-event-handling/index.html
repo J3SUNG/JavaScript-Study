@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 처리 연습</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            padding: 8px 12px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #0055aa;
+        }
+        .color-text {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .toggle-content {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        .character-count {
+            margin-top: 5px;
+            color: #666;
+        }
+        .log-container {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            max-height: 100px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript 이벤트 처리 연습</h1>
+    
+    <div class="section">
+        <h2>색상 변경</h2>
+        <p id="color-text" class="color-text">이 텍스트의 색상이 변경됩니다.</p>
+        <button id="color-button">색상 변경</button>
+    </div>
+    
+    <div class="section">
+        <h2>숨기기/보이기</h2>
+        <div id="toggle-content" class="toggle-content">
+            <p>이 내용을 숨기거나 표시할 수 있습니다.</p>
+        </div>
+        <button id="toggle-button">숨기기/보이기</button>
+    </div>
+    
+    <div class="section">
+        <h2>문자 수 카운터</h2>
+        <textarea id="text-input" rows="4" placeholder="여기에 텍스트를 입력하세요..."></textarea>
+        <div id="char-counter" class="character-count">글자 수: 0</div>
+    </div>
+    
+    <div class="section">
+        <h2>체크박스 이벤트</h2>
+        <label>
+            <input type="checkbox" id="consent-checkbox"> 약관에 동의합니다
+        </label>
+        <div id="log-container" class="log-container"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

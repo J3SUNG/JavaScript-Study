@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML 폼 구현하기</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+      }
+      .info {
+        background-color: #f5f5f5;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+      .required {
+        color: red;
+      }
+      form {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      button {
+        background-color: #0066cc;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #0055aa;
+      }
+      fieldset {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 10px 15px;
+        margin-bottom: 15px;
+      }
+      legend {
+        font-weight: bold;
+        padding: 0 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>연락처 폼 구현하기</h1>
+
+    <div class="info">
+      <p>아래 요구사항에 맞게 HTML 폼을 구현하세요:</p>
+      <ul>
+        <li>이름 (필수 입력)</li>
+        <li>이메일 (필수 입력)</li>
+        <li>전화번호 (선택 사항)</li>
+        <li>성별 (라디오 버튼: 남성, 여성, 기타)</li>
+        <li>관심 분야 (체크박스: 개발, 디자인, 마케팅)</li>
+        <li>국가 (드롭다운 선택: 대한민국, 미국, 일본, 중국, 기타)</li>
+        <li>메시지 (텍스트 영역)</li>
+        <li>제출 버튼</li>
+      </ul>
+      <p>폼 데이터는 POST 방식으로 "/submit" 엔드포인트에 제출되도록 설정하세요.</p>
+      <p>필수 입력 필드는 <span class="required">*</span> 표시와 required 속성을 사용하세요.</p>
+    </div>
+
+    <!-- 여기에 폼을 구현하세요 -->
+    <form action="/submit" method="POST">
+      <label for="name">이름 <span class="required">*</span> </label>
+      <input id="name" type="text" name="name" required />
+      <label for="email">이메일 <span class="required">*</span></label>
+      <input id="email" type="email" name="email" required />
+      <label for="phone">전화번호</label>
+      <input id="phone" type="tel" name="phone" />
+      <fieldset>
+        <legend>성별</legend>
+        <label for="male">남자</label>
+        <input id="male" type="radio" name="gender" value="male" />
+        <label for="female">여자</label>
+        <input id="female" type="radio" name="gender" value="female" />
+        <label for="other">기타</label>
+        <input id="other" type="radio" name="gender" value="other" />
+      </fieldset>
+      <fieldset>
+        <legend>관심 분야</legend>
+        <label for="development">개발</label>
+        <input type="checkbox" id="development" name="interest" value="development" />
+        <label for="design">디자인</label>
+        <input type="checkbox" id="design" name="interest" value="design" />
+        <label for="marketing">marketing</label>
+        <input type="checkbox" id="marketing" name="interest" value="marketing" />
+      </fieldset>
+      <label for="country">국가</label>
+      <select id="country" name="country">
+        <option value="">-- 선택하세요 --</option>
+        <option value="kr">대한민국</option>
+        <option value="jp">일본</option>
+        <option value="us">미국</option>
+        <option value="cn">중국</option>
+        <option value="etc">기타</option>
+      </select>
+      <label for="message">메시지</label>
+      <textarea id="message" name="message" rows="4"></textarea>
+      <button type="submit">제출</button>
+    </form>
+  </body>
+</html>

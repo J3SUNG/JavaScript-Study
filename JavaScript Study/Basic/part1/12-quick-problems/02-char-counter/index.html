@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문자 수 카운터</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .text-area-container {
+        position: relative;
+        margin-bottom: 20px;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 150px;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ddd;
+        font-size: 16px;
+      }
+
+      .char-counter {
+        position: absolute;
+        bottom: 5px;
+        right: 10px;
+        font-size: 14px;
+        color: #777;
+      }
+
+      .exceeded {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>문자 수 카운터</h1>
+
+    <div class="text-area-container">
+      <textarea
+        id="message"
+        placeholder="메시지를 입력하세요 (최대 100자)"
+        maxlength="100"
+      ></textarea>
+      <div id="counter" class="char-counter">100/100자</div>
+    </div>
+
+    <script>
+      const message = document.querySelector("#message");
+      const counter = document.querySelector(".char-counter");
+
+      message.addEventListener("input", () => {
+        const length = message.value.length;
+
+        counter.textContent = `${100 - length}/100자`;
+
+        counter.classList.toggle("exceeded", length >= 100);
+      });
+    </script>
+  </body>
+</html>

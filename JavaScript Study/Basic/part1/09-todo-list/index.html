@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do 리스트</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do 리스트</h1>
+        
+        <div class="add-todo">
+            <input type="text" id="todo-input" placeholder="할 일을 입력하세요...">
+            <button id="add-button">추가</button>
+        </div>
+        
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">전체</button>
+            <button class="filter-btn" data-filter="active">미완료</button>
+            <button class="filter-btn" data-filter="completed">완료</button>
+        </div>
+        
+        <ul id="todo-list" class="todo-list">
+            <!-- 할 일 항목들이 여기에 추가됩니다 -->
+        </ul>
+        
+        <div class="info">
+            <p><strong>팁:</strong> 항목을 클릭하면 완료/미완료 상태가 토글됩니다.</p>
+            <p>더블 클릭하면 수정 모드로 전환됩니다.</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

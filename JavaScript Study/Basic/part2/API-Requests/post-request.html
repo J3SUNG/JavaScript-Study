@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Async/Await POST 요청</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+    
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: #f9f9f9;
+    }
+    
+    .loading {
+      color: #666;
+      font-style: italic;
+    }
+    
+    .success {
+      color: #4CAF50;
+    }
+    
+    .error {
+      color: #f44336;
+    }
+  </style>
+</head>
+<body>
+  <h1>POST 요청 보내기</h1>
+  
+  <form id="postForm">
+    <div class="form-group">
+      <label for="title">제목:</label>
+      <input type="text" id="title" name="title" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="body">내용:</label>
+      <textarea id="body" name="body" rows="4" required></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label for="userId">사용자 ID:</label>
+      <input type="number" id="userId" name="userId" min="1" value="1" required>
+    </div>
+    
+    <button type="submit">게시물 생성</button>
+  </form>
+  
+  <div id="result" class="result" style="display: none;"></div>
+  
+  <script>
+    // 문제: 다음 요구사항을 만족하는 POST 요청 기능을 구현하세요.
+    // 1. async/await를 사용하여 'https://jsonplaceholder.typicode.com/posts' API에 POST 요청을 보내세요.
+    // 2. 폼 제출 시 입력된 데이터를 수집하여 JSON 형식으로 API에 전송하세요.
+    // 3. 로딩 중일 때 "요청 처리 중..." 메시지를 표시하세요.
+    // 4. 요청 성공 시 결과를 JSON 형식으로 보기 좋게 표시하세요.
+    // 5. 오류 발생 시 오류 메시지를 표시하세요.
+    // 6. try-catch 구문을 사용하여 오류를 적절히 처리하세요.
+    // 시간: 약 5분
+    
+    // 여기에 코드를 작성하세요
+    
+  </script>
+</body>
+</html>

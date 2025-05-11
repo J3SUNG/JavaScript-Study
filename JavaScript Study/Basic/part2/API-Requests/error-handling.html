@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API 에러 핸들링</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .controls {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+    }
+    
+    button {
+      padding: 8px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    button.error-btn {
+      background-color: #f44336;
+    }
+    
+    button.timeout-btn {
+      background-color: #ff9800;
+    }
+    
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: #f9f9f9;
+    }
+    
+    .loading {
+      color: #666;
+      font-style: italic;
+    }
+    
+    .success {
+      color: #4CAF50;
+    }
+    
+    .error {
+      color: #f44336;
+      padding: 10px;
+      border: 1px solid #f44336;
+      border-radius: 4px;
+    }
+    
+    .retry-container {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .retry-count {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>API 에러 핸들링</h1>
+  
+  <div class="controls">
+    <button id="successBtn">성공 요청</button>
+    <button id="errorBtn" class="error-btn">오류 요청</button>
+    <button id="timeoutBtn" class="timeout-btn">타임아웃 요청</button>
+  </div>
+  
+  <div id="result" class="result" style="display: none;"></div>
+  
+  <script>
+    // 문제: 다음 요구사항을 만족하는 API 에러 핸들링 기능을 구현하세요.
+    // 1. 세 가지 버튼을 통해 각각 다른 유형의 API 요청을 구현하세요:
+    //    - 성공 요청: https://jsonplaceholder.typicode.com/posts/1 (GET)
+    //    - 오류 요청: https://jsonplaceholder.typicode.com/non-existent (404 오류)
+    //    - 타임아웃 요청: 실제 타임아웃을 구현하려면 시뮬레이션이 필요합니다
+    // 2. try-catch 구문과 async/await를 사용하여 각 요청의 오류를 적절히 처리하세요.
+    // 3. 오류 발생 시 오류 유형(404, 타임아웃 등)에 따라 다른 메시지를 표시하세요.
+    // 4. 실패한 요청에 대해 '재시도' 버튼을 표시하고, 최대 3번까지 재시도할 수 있도록 구현하세요.
+    // 5. 재시도 횟수를 화면에 표시하세요.
+    // 6. fetch 요청에 timeout 옵션을 적용하는 방법을 구현하세요.
+    // 시간: 약 5분
+    
+    // 여기에 코드를 작성하세요
+    
+  </script>
+</body>
+</html>

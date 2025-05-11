@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>검색 필터링</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .search-container {
+            margin-bottom: 20px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .no-result {
+            padding: 10px;
+            color: #999;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>과일 검색</h1>
+    
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="과일 이름으로 검색...">
+    </div>
+    
+    <ul id="fruitList">
+        <li>사과</li>
+        <li>바나나</li>
+        <li>체리</li>
+        <li>드래곤프루트</li>
+        <li>엘더베리</li>
+        <li>무화과</li>
+        <li>포도</li>
+        <li>허니듀</li>
+        <li>키위</li>
+        <li>레몬</li>
+        <li>망고</li>
+        <li>네스페라</li>
+        <li>오렌지</li>
+        <li>파파야</li>
+        <li>산딸기</li>
+        <li>딸기</li>
+        <li>수박</li>
+    </ul>
+    
+    <div id="noResult" class="no-result">검색 결과가 없습니다</div>
+    
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const fruitList = document.getElementById('fruitList');
+        const listItems = fruitList.getElementsByTagName('li');
+        const noResult = document.getElementById('noResult');
+        
+        searchInput.addEventListener('input', function() {
+            const searchTerm = searchInput.value.toLowerCase();
+            let visibleCount = 0;
+            
+            // 각 항목을 확인하며 검색어가 포함된 항목만 표시
+            for (let i = 0; i < listItems.length; i++) {
+                const item = listItems[i];
+                const text = item.textContent.toLowerCase();
+                
+                if (text.includes(searchTerm)) {
+                    item.style.display = '';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            }
+            
+            // 검색 결과가 없을 경우 메시지 표시
+            if (visibleCount === 0) {
+                noResult.style.display = 'block';
+            } else {
+                noResult.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>검색 필터</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .search-container {
+      margin-bottom: 20px;
+    }
+    
+    .search-input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    
+    .country-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .country-item {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .country-item:hover {
+      background-color: #f5f5f5;
+    }
+    
+    .no-results {
+      color: #999;
+      font-style: italic;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>국가 검색</h1>
+  
+  <div class="search-container">
+    <input type="text" class="search-input" id="searchInput" placeholder="국가 이름 검색...">
+  </div>
+  
+  <ul class="country-list" id="countryList">
+    <li class="country-item">대한민국</li>
+    <li class="country-item">미국</li>
+    <li class="country-item">일본</li>
+    <li class="country-item">중국</li>
+    <li class="country-item">영국</li>
+    <li class="country-item">프랑스</li>
+    <li class="country-item">독일</li>
+    <li class="country-item">이탈리아</li>
+    <li class="country-item">스페인</li>
+    <li class="country-item">캐나다</li>
+    <li class="country-item">호주</li>
+    <li class="country-item">브라질</li>
+  </ul>
+  
+  <div id="noResults" class="no-results" style="display: none;">검색 결과가 없습니다.</div>
+  
+  <script>
+    // 문제: 다음 요구사항에 맞는 검색 필터 기능을 구현하세요
+    // 1. 검색창에 텍스트를 입력하면 실시간으로 국가 목록을 필터링하세요
+    // 2. 대소문자를 구분하지 않고 검색하도록 구현하세요
+    // 3. 검색어를 포함하는 모든 국가를 표시하세요
+    // 4. 검색 결과가 없을 경우 '검색 결과가 없습니다' 메시지를 표시하세요
+    // 5. 검색창이 비어있을 경우 모든 국가를 표시하세요
+    // 시간: 약 4분
+    
+    // 여기에 코드를 작성하세요
+    
+  </script>
+</body>
+</html>

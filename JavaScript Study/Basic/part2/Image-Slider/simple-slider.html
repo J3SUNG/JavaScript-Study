@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>간단한 이미지 슬라이더</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .slider-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      height: 300px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+    }
+    
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      transition: transform 0.5s ease;
+      background-color: #f5f5f5;
+    }
+    
+    .slide:nth-child(1) { background-color: #ffcccc; }
+    .slide:nth-child(2) { background-color: #ccffcc; }
+    .slide:nth-child(3) { background-color: #ccccff; }
+    
+    .controls {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    
+    .controls button {
+      margin: 0 5px;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+    
+    .indicator {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #bbb;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+    
+    .dot.active {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>간단한 이미지 슬라이더</h1>
+  
+  <div class="slider-container" id="slider">
+    <div class="slide">슬라이드 1</div>
+    <div class="slide">슬라이드 2</div>
+    <div class="slide">슬라이드 3</div>
+  </div>
+  
+  <div class="controls">
+    <button id="prevBtn">이전</button>
+    <button id="nextBtn">다음</button>
+  </div>
+  
+  <div class="indicator" id="indicator">
+    <!-- 인디케이터는 JS로 생성하세요 -->
+  </div>
+  
+  <script>
+    // 문제: 다음 요구사항에 맞게 이미지 슬라이더를 구현하세요.
+    // 1. 다음/이전 버튼으로 슬라이드 이동 기능 구현
+    // 2. 인디케이터(점)을 동적으로 생성하고, 클릭하면 해당 슬라이드로 이동하는 기능 구현
+    // 3. 현재 슬라이드에 해당하는 인디케이터 활성화(active 클래스 추가)
+    // 4. 무한 슬라이드 기능 구현 (마지막 슬라이드에서 다음 버튼 클릭시 첫 슬라이드로, 첫 슬라이드에서 이전 버튼 클릭시 마지막 슬라이드로)
+    // 시간: 약 5분
+    
+    // 여기에 코드를 작성하세요
+    
+  </script>
+</body>
+</html>

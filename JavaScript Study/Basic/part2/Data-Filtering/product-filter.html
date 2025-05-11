@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상품 필터링</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 20px;
+      padding: 15px;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+    }
+    
+    .search-container {
+      flex: 1 1 100%;
+      margin-bottom: 10px;
+    }
+    
+    .search-input {
+      width: 100%;
+      padding: 8px;
+      font-size: 1em;
+    }
+    
+    .filter-group {
+      flex: 1 1 200px;
+    }
+    
+    .filter-group h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1em;
+    }
+    
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 15px;
+      transition: transform 0.2s;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .product-card h3 {
+      margin-top: 0;
+      font-size: 1.1em;
+    }
+    
+    .product-card .price {
+      font-weight: bold;
+      color: #e74c3c;
+    }
+    
+    .product-card .category {
+      display: inline-block;
+      background-color: #3498db;
+      color: white;
+      padding: 3px 8px;
+      border-radius: 3px;
+      font-size: 0.8em;
+      margin-top: 5px;
+    }
+    
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 20px;
+      background-color: #f8f8f8;
+    }
+  </style>
+</head>
+<body>
+  <h1>상품 필터링</h1>
+  
+  <div class="filters">
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-input" placeholder="상품명 검색...">
+    </div>
+    
+    <div class="filter-group">
+      <h3>카테고리</h3>
+      <div>
+        <label><input type="checkbox" name="category" value="전자기기"> 전자기기</label>
+      </div>
+      <div>
+        <label><input type="checkbox" name="category" value="의류"> 의류</label>
+      </div>
+      <div>
+        <label><input type="checkbox" name="category" value="식품"> 식품</label>
+      </div>
+    </div>
+    
+    <div class="filter-group">
+      <h3>가격 범위</h3>
+      <div>
+        <label><input type="checkbox" name="price" value="0-50000"> 5만원 미만</label>
+      </div>
+      <div>
+        <label><input type="checkbox" name="price" value="50000-100000"> 5만원 - 10만원</label>
+      </div>
+      <div>
+        <label><input type="checkbox" name="price" value="100000+"> 10만원 이상</label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="products" id="productsList">
+    <!-- 상품 목록은 JavaScript로 동적 생성 -->
+  </div>
+  
+  <script>
+    // 문제: 다음 요구사항에 맞게 상품 필터링 기능을 구현하세요.
+    // 1. 주어진 상품 데이터를 기반으로 상품 카드를 동적으로 생성
+    // 2. 검색어에 따라 상품명 필터링 (실시간 업데이트)
+    // 3. 카테고리 체크박스로 카테고리별 필터링
+    // 4. 가격 범위 체크박스로 가격별 필터링
+    // 5. 여러 필터 조건을 조합하여 필터링 (AND 조건)
+    // 6. 필터링 결과가 없을 때 "검색 결과가 없습니다" 메시지 표시
+    // 시간: 약 5분
+    
+    // 샘플 상품 데이터
+    const products = [
+      { id: 1, name: "스마트폰", category: "전자기기", price: 850000 },
+      { id: 2, name: "노트북", category: "전자기기", price: 1200000 },
+      { id: 3, name: "티셔츠", category: "의류", price: 30000 },
+      { id: 4, name: "청바지", category: "의류", price: 55000 },
+      { id: 5, name: "과일 세트", category: "식품", price: 45000 },
+      { id: 6, name: "커피", category: "식품", price: 15000 },
+      { id: 7, name: "헤드폰", category: "전자기기", price: 75000 },
+      { id: 8, name: "운동화", category: "의류", price: 95000 },
+      { id: 9, name: "초콜릿", category: "식품", price: 5000 }
+    ];
+    
+    // 여기에 코드를 작성하세요
+    
+  </script>
+</body>
+</html>

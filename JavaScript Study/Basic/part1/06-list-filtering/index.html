@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>리스트 필터링</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>제품 목록 필터링</h1>
+
+      <div class="filter-controls">
+        <div class="search-container">
+          <input type="text" id="search-input" placeholder="제품명 검색..." />
+        </div>
+
+        <div class="category-filter">
+          <label for="category-select">카테고리:</label>
+          <select id="category-select">
+            <option value="all">전체</option>
+            <option value="electronics">전자제품</option>
+            <option value="clothing">의류</option>
+            <option value="books">도서</option>
+            <option value="food">식품</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="product-list">
+        <div class="product-item" data-category="electronics">
+          <h3>스마트폰</h3>
+          <p>최신 스마트폰 모델입니다.</p>
+          <span class="price">₩800,000</span>
+        </div>
+
+        <div class="product-item" data-category="electronics">
+          <h3>노트북</h3>
+          <p>고성능 노트북 컴퓨터입니다.</p>
+          <span class="price">₩1,500,000</span>
+        </div>
+
+        <div class="product-item" data-category="clothing">
+          <h3>티셔츠</h3>
+          <p>편안한 면 티셔츠입니다.</p>
+          <span class="price">₩25,000</span>
+        </div>
+
+        <div class="product-item" data-category="clothing">
+          <h3>청바지</h3>
+          <p>클래식한 디자인의 청바지입니다.</p>
+          <span class="price">₩45,000</span>
+        </div>
+
+        <div class="product-item" data-category="books">
+          <h3>소설책</h3>
+          <p>베스트셀러 소설입니다.</p>
+          <span class="price">₩15,000</span>
+        </div>
+
+        <div class="product-item" data-category="books">
+          <h3>프로그래밍 책</h3>
+          <p>JavaScript 학습을 위한 책입니다.</p>
+          <span class="price">₩28,000</span>
+        </div>
+
+        <div class="product-item" data-category="food">
+          <h3>초콜릿</h3>
+          <p>고급 다크 초콜릿입니다.</p>
+          <span class="price">₩5,000</span>
+        </div>
+
+        <div class="product-item" data-category="food">
+          <h3>커피</h3>
+          <p>유기농 원두 커피입니다.</p>
+          <span class="price">₩12,000</span>
+        </div>
+      </div>
+
+      <div id="no-results" class="no-results">검색 결과가 없습니다.</div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

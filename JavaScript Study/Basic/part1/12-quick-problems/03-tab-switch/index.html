@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>탭 전환</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .tab-container {
+        margin-top: 20px;
+      }
+
+      .tab-buttons {
+        display: flex;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .tab-button {
+        padding: 10px 20px;
+        background-color: #f1f1f1;
+        border: 1px solid #ddd;
+        border-bottom: none;
+        margin-right: 5px;
+        cursor: pointer;
+      }
+
+      .tab-button.active {
+        background-color: white;
+        border-bottom: 1px solid white;
+        margin-bottom: -1px;
+      }
+
+      .tab-content {
+        display: none;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-top: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>탭 인터페이스</h1>
+
+    <div class="tab-container">
+      <div class="tab-buttons">
+        <div class="tab-button" id="tab1">탭 1</div>
+        <div class="tab-button" id="tab2">탭 2</div>
+        <div class="tab-button" id="tab3">탭 3</div>
+      </div>
+
+      <div class="tab-content" id="content1">
+        <h2>탭 1 내용</h2>
+        <p>이것은 첫 번째 탭의 내용입니다.</p>
+      </div>
+
+      <div class="tab-content" id="content2">
+        <h2>탭 2 내용</h2>
+        <p>이것은 두 번째 탭의 내용입니다.</p>
+      </div>
+
+      <div class="tab-content" id="content3">
+        <h2>탭 3 내용</h2>
+        <p>이것은 세 번째 탭의 내용입니다.</p>
+      </div>
+    </div>
+
+    <script>
+      const tabButton = document.querySelector(".tab-buttons");
+      const tab1 = document.querySelector("#tab1");
+      const tab2 = document.querySelector("#tab2");
+      const tab3 = document.querySelector("#tab3");
+      tabButton.addEventListener("click", (e) => {
+        const target = e.target;
+
+        if (target.id === "tab1") {
+          tab1.classList.add("active");
+          tab2.classList.remove("active");
+          tab3.classList.remove("active");
+          content1.classList.add("active");
+          content2.classList.remove("active");
+          content3.classList.remove("active");
+        } else if (target.id === "tab2") {
+          tab1.classList.remove("active");
+          tab2.classList.add("active");
+          tab3.classList.remove("active");
+          content1.classList.remove("active");
+          content2.classList.add("active");
+          content3.classList.remove("active");
+        } else if (target.id === "tab3") {
+          tab1.classList.remove("active");
+          tab2.classList.remove("active");
+          tab3.classList.add("active");
+          content1.classList.remove("active");
+          content2.classList.remove("active");
+          content3.classList.add("active");
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+/* 기본 스타일 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #f8f8f8;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+/* 내비게이션 메뉴 스타일링 */
+.nav-menu {
+  position: relative;
+}
+
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #333;
+}
+
+.menu-items {
+  list-style: none;
+  display: flex;
+}
+
+.menu-items li {
+  margin-left: 20px;
+}
+
+.menu-items a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding: 5px 10px;
+  transition: color 0.3s;
+}
+
+.menu-items a:hover {
+  color: #0066cc;
+}
+
+.menu-items a.active {
+  color: #0066cc;
+  border-bottom: 2px solid #0066cc;
+}
+
+.close-menu {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+  text-align: right;
+  padding: 10px;
+}
+
+/* 메인 콘텐츠 스타일 */
+.content {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+/* 미디어 쿼리 - 모바일 스타일 */
+@media (max-width: 767px) {
+  .menu-toggle {
+    display: block; /* 햄버거 메뉴 표시 */
+  }
+
+  .menu-items {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #fff;
+    flex-direction: column;
+    padding: 50px 20px 20px;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%); /* 초기에는 화면 밖으로 숨김 */
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  .menu-items.active {
+    transform: translateX(0); /* 활성화되면 화면으로 슬라이드 */
+  }
+
+  .menu-items li {
+    margin: 15px 0;
+  }
+
+  .close-menu {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+}

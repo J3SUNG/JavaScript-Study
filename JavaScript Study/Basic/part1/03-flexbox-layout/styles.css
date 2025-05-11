@@ -1,0 +1,75 @@
+/* 기본 스타일 */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #333;
+}
+
+/* 카드 스타일 */
+.card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #0066cc;
+}
+
+.card button {
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background-color: #0055aa;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  flex: 1 1 calc(33.333% - 20px);
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex: 1 1 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    flex: 1 1 100%;
+  }
+}
+/* 
+  여기에 Flexbox를 사용하여 카드 레이아웃을 구현하세요.
+  요구사항:
+  1. 카드는 한 줄에 3개씩 표시
+  2. 카드 사이에 20px 간격
+  3. 카드는 동일한 너비를 가짐
+  4. 반응형: 768px 이하일 때 2개씩, 480px 이하일 때 1개씩 표시
+*/
+
+/* 카드 컨테이너 스타일 - 여기에 코드를 작성하세요 */

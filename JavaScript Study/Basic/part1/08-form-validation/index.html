@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼 유효성 검사</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>회원 가입</h1>
+        <form id="signup-form">
+            <div class="form-group">
+                <label for="username">사용자 이름</label>
+                <input type="text" id="username" name="username" placeholder="이름을 입력하세요">
+                <div class="error-message" id="username-error">사용자 이름은 최소 2자 이상이어야 하며 특수문자를 포함할 수 없습니다.</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">이메일</label>
+                <input type="email" id="email" name="email" placeholder="이메일을 입력하세요">
+                <div class="error-message" id="email-error">유효한 이메일 주소를 입력하세요.</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">비밀번호</label>
+                <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요">
+                <div class="error-message" id="password-error">비밀번호는 최소 8자 이상이어야 하며 문자와 숫자를 포함해야 합니다.</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirm-password">비밀번호 확인</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="비밀번호를 다시 입력하세요">
+                <div class="error-message" id="confirm-password-error">비밀번호가 일치하지 않습니다.</div>
+            </div>
+            
+            <div class="form-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="terms" name="terms">
+                    <span>이용약관에 동의합니다</span>
+                </label>
+                <div class="error-message" id="terms-error">이용약관에 동의해야 합니다.</div>
+            </div>
+            
+            <button type="submit">가입하기</button>
+        </form>
+        
+        <div id="success-message" class="success-message">
+            가입이 완료되었습니다!
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

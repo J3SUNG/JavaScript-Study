@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 슬라이더</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>이미지 슬라이더</h1>
+        
+        <div class="slider-container">
+            <div class="slider" id="slider">
+                <div class="slide">
+                    <img src="https://picsum.photos/id/10/800/400" alt="이미지 1">
+                </div>
+                <div class="slide">
+                    <img src="https://picsum.photos/id/11/800/400" alt="이미지 2">
+                </div>
+                <div class="slide">
+                    <img src="https://picsum.photos/id/12/800/400" alt="이미지 3">
+                </div>
+                <div class="slide">
+                    <img src="https://picsum.photos/id/13/800/400" alt="이미지 4">
+                </div>
+                <div class="slide">
+                    <img src="https://picsum.photos/id/14/800/400" alt="이미지 5">
+                </div>
+            </div>
+            
+            <button id="prev-btn" class="nav-btn prev-btn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button id="next-btn" class="nav-btn next-btn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <div id="indicators" class="indicators">
+                <!-- 인디케이터는 JavaScript로 생성됩니다 -->
+            </div>
+            
+            <button id="autoplay-btn" class="autoplay-btn">
+                <i class="fas fa-pause"></i>
+            </button>
+        </div>
+        
+        <div class="info">
+            <p>현재 슬라이드: <span id="current-slide">1</span> / <span id="total-slides">5</span></p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테이블 데이터 정렬</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        th:hover {
+            background-color: #e6e6e6;
+        }
+        
+        .arrow {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+        
+        .arrow.up {
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid #333;
+        }
+        
+        .arrow.down {
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>학생 정보 테이블</h1>
+    
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th data-type="text">이름 <span class="arrow"></span></th>
+                <th data-type="number">나이 <span class="arrow"></span></th>
+                <th data-type="number">점수 <span class="arrow"></span></th>
+                <th data-type="text">과목 <span class="arrow"></span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>김철수</td>
+                <td>22</td>
+                <td>85</td>
+                <td>수학</td>
+            </tr>
+            <tr>
+                <td>이영희</td>
+                <td>20</td>
+                <td>92</td>
+                <td>영어</td>
+            </tr>
+            <tr>
+                <td>박민수</td>
+                <td>25</td>
+                <td>78</td>
+                <td>과학</td>
+            </tr>
+            <tr>
+                <td>정다은</td>
+                <td>19</td>
+                <td>95</td>
+                <td>국어</td>
+            </tr>
+            <tr>
+                <td>최재민</td>
+                <td>23</td>
+                <td>88</td>
+                <td>역사</td>
+            </tr>
+            <tr>
+                <td>강지수</td>
+                <td>21</td>
+                <td>82</td>
+                <td>물리</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <script>
+        
+    </script>
+</body>
+</html>

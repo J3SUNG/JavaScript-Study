@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>버블 정렬 시각화</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .container {
+      margin: 20px auto;
+      max-width: 600px;
+    }
+    
+    .bars-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 300px;
+      margin: 20px 0;
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+    
+    .bar {
+      background-color: #3498db;
+      margin: 0 2px;
+      width: 20px;
+      transition: height 0.2s ease;
+    }
+    
+    .bar.active {
+      background-color: #e74c3c;
+    }
+    
+    .bar.sorted {
+      background-color: #2ecc71;
+    }
+    
+    .controls {
+      margin: 20px 0;
+    }
+    
+    button {
+      padding: 8px 16px;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>버블 정렬 시각화</h1>
+  
+  <div class="container">
+    <div class="bars-container" id="barsContainer"></div>
+    
+    <div class="controls">
+      <button id="generateBtn">무작위 배열 생성</button>
+      <button id="sortBtn">정렬 시작</button>
+      <button id="resetBtn">초기화</button>
+    </div>
+  </div>
+  
+  <script>
+    // 문제: 버블 정렬 알고리즘을 시각적으로 표현하는 기능을 구현하세요.
+    // 1. '무작위 배열 생성' 버튼 클릭 시 1~50 사이의 랜덤 값 10개로 구성된 배열을 생성하고 막대로 표시
+    // 2. '정렬 시작' 버튼 클릭 시 버블 정렬 알고리즘을 단계별로 시각화 (setTimeout 사용)
+    // 3. 비교 중인 두 요소는 빨간색으로, 정렬이 완료된 요소는 녹색으로 표시
+    // 4. '초기화' 버튼 클릭 시 정렬 과정을 중단하고 원래 배열로 되돌림
+    // 시간: 약 5분
+    
+    // 여기에 코드를 작성하세요
+    
+  </script>
+</body>
+</html>

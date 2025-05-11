@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>버튼 토글</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        transition: background-color 0.3s;
+      }
+
+      .toggle-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .active {
+        background-color: #3498db;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="toggleBtn" class="toggle-btn">켜기</button>
+
+    <script>
+      const toggleBtn = document.querySelector("#toggleBtn");
+      toggleBtn.addEventListener("click", () => {
+        toggleBtn.classList.toggle("active");
+      });
+      // 여기에 JavaScript 코드를 작성하세요
+    </script>
+  </body>
+</html>

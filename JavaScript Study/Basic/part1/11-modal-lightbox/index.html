@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모달 창과 라이트박스</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>모달 창과 라이트박스 예제</h1>
+        
+        <section class="modal-section">
+            <h2>모달 창 예제</h2>
+            <p>버튼을 클릭하면 모달 창이 나타납니다.</p>
+            <button id="open-modal" class="btn">모달 창 열기</button>
+        </section>
+        
+        <section class="lightbox-section">
+            <h2>이미지 라이트박스 예제</h2>
+            <p>이미지를 클릭하면 라이트박스가 나타납니다.</p>
+            
+            <div class="gallery">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/id/1/300/200" alt="자연 이미지 1" data-id="1">
+                    <p>자연 이미지 1</p>
+                </div>
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/id/10/300/200" alt="자연 이미지 2" data-id="2">
+                    <p>자연 이미지 2</p>
+                </div>
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/id/20/300/200" alt="자연 이미지 3" data-id="3">
+                    <p>자연 이미지 3</p>
+                </div>
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/id/30/300/200" alt="자연 이미지 4" data-id="4">
+                    <p>자연 이미지 4</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 모달 창과 라이트박스는 JavaScript로 동적 생성하거나, 
+             아래 주석을 해제하여 HTML에 직접 포함시킬 수 있습니다 -->
+        
+        <!-- 
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>모달 창 제목</h2>
+                <p>모달 창 내용입니다. 여기에 원하는 컨텐츠를 넣을 수 있습니다.</p>
+            </div>
+        </div>
+        
+        <div id="lightbox" class="lightbox">
+            <div class="lightbox-content">
+                <span class="close-button">&times;</span>
+                <img src="" alt="확대된 이미지">
+                <div class="caption"></div>
+                <button class="nav-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="nav-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        -->
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
